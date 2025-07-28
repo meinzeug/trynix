@@ -40,4 +40,7 @@
 ## Besonderheiten
 - Alle Daten bleiben lokal; keine Cloudspeicherung
 - API-Schluessel werden in einer Datei gesichert und niemals in den Code eingebettet
-- Geplantes Plugin-System ermoeglicht Erweiterungen (z.B. neue Agenten oder Funktionen)
+- Plugin-System ermoeglicht Erweiterungen (z.B. neue Agenten oder Funktionen)
+- TTS-Ausgabe fuer Rueckmeldungen der Queen
+- Beispiel-Plugin aktiviert Darkmode in der GUI
+- `build.py` baut Windows- und Linux-Installer via PyInstaller

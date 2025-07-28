@@ -22,10 +22,10 @@ DONE_PREFIXES = {
     "Mehrere Projekte parallel": True,
     "Rollen-/Rechtesystem": True,
     "Sicheres API-Key-Handling": True,
-    "Build mit PyInstaller": False,
-    "Dokumentation erweitern": False,
-    "Plugin-Schnittstelle": False,
-    "Optionale Features": False,
+    "Build mit PyInstaller": True,
+    "Dokumentation erweitern": True,
+    "Plugin-Schnittstelle": True,
+    "Optionale Features": True,
 }
 
 CHECKBOX_RE = re.compile(r'^(\s*-)(?:\s*\[[ xX]\])?\s*(.*)$')

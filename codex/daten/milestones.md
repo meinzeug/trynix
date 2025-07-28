@@ -33,8 +33,8 @@
 - [x] Sicheres API-Key-Handling und Passwort-Hashing
 
 ## Milestone 7: Deployment & Feinschliff
-- [ ] Build mit PyInstaller fuer Windows und Linux
-- [ ] Dokumentation erweitern
-- [ ] Plugin-Schnittstelle vorbereiten
-- [ ] Optionale Features (TTS, LAN-Sharing, Themes)
+- [x] Build mit PyInstaller fuer Windows und Linux
+- [x] Dokumentation erweitern
+- [x] Plugin-Schnittstelle vorbereiten
+- [x] Optionale Features (TTS, LAN-Sharing, Themes)
 
