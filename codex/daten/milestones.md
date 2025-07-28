@@ -54,5 +54,15 @@
 - [ ] Schalter in den Einstellungen zum Aktivieren/Deaktivieren
 
 ## Milestone 11: Agenten-Plugin-System
-- [ ] Plugin-Schnittstelle erweitern, um neue Agenten einzubinden
+- [x] Plugin-Schnittstelle erweitern, um neue Agenten einzubinden
 - [ ] Beispielplugin fuer einen Custom-Agent bereitstellen
+
+## Milestone 12: Live-Projekt-Workspace & ZIP-Export
+- [ ] Zentrales Verzeichnis `workspace/` anlegen
+- [ ] Unterordner `<projektname-timestamp>` bei jedem Agentenlauf erstellen
+- [ ] Dateibaum in der GUI mit `QFileSystemModel` live anzeigen
+- [ ] Dateien per Klick in schreibgeschütztem Editor mit Syntaxhighlighting öffnen
+- [ ] Änderungen am Workspace in Echtzeit verfolgen
+- [ ] Projektordner über einen Button als ZIP exportieren
+- [ ] Archivierung mit `shutil.make_archive` implementieren
+- [ ] Pfadverwaltung und DB-Eintrag für den Workspace ergänzen

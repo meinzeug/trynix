@@ -49,3 +49,10 @@
 - `build.py` baut Windows- und Linux-Installer via PyInstaller
 - `lan_share.py` ermoeglicht Projekt-Sharing ueber einen lokalen HTTP-Server
 - Adminpanel und Settings-Fenster sind in der GUI integriert
+
+## Projekt-Workspace & ZIP-Export
+- Alle generierten Dateien liegen in einem zentralen Ordner `workspace/`.
+- Jeder KI-Lauf legt darunter einen Unterordner mit `<projektname-timestamp>` an.
+- Die GUI zeigt den Ordner mit `QFileSystemModel` live an und aktualisiert sich bei Änderungen.
+- Beim Anklicken einer Datei öffnet sich ein schreibgeschützter Editor mit Syntaxhighlighting.
+- Über einen Export-Button wird der Projektordner mit `shutil.make_archive` als ZIP gepackt und kann gespeichert werden.
