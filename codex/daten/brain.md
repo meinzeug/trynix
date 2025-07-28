@@ -25,3 +25,9 @@
 - Build-Skript fuer PyInstaller hinzugefuegt.
 - LAN-Sharing umgesetzt: neuer Service zum Teilen eines Projekts als ZIP per HTTP und Share-Button im Dashboard.
 - Adminpanel und Settings-Fenster fuer API-Key implementiert.
+- Konzeptpruefung: Anforderungen mit README abgeglichen. Folgende Funktionen fehlen:
+  - Pausieren/Fortsetzen der KI-Laeufe und manuelle Taskbearbeitung
+  - Syntaxhighlighting im Code-Viewer
+  - Automatische TTS-Ausgabe fuer Queen-Meldungen
+  - Erweiterbare Agenten via Plugin-Schnittstelle
+- Neue Milestones 8 bis 11 entsprechend angelegt.
