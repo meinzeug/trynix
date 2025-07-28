@@ -10,6 +10,7 @@ from .taskmanager import TaskManagerWindow
 from .roadmap import RoadmapWindow
 from .wand import WandWindow
 from .agent_creator import AgentCreatorDialog
+from .tool_editor import ToolEditorDialog
 
 __all__ = [
     "LoginWindow",
@@ -24,4 +25,5 @@ __all__ = [
     "RoadmapWindow",
     "WandWindow",
     "AgentCreatorDialog",
+    "ToolEditorDialog",
 ]
