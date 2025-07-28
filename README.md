@@ -144,7 +144,7 @@ Die Datenbank wird bei Erststart automatisch erzeugt.
 ## 🔐 Sicherheit
 
 - Lokale Speicherung (keine Cloud)
-- Passwort-Hashing (z. B. bcrypt)
+ - Passwort-Hashing mit `bcrypt`
 - API-Key-Handling sicher in Datei
 - Nur Admin darf Projekte löschen, Konfiguration ändern
 
