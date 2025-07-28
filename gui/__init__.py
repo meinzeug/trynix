@@ -7,6 +7,7 @@ from .status import StatusWindow
 from .admin import AdminWindow
 from .settings import SettingsWindow
 from .taskmanager import TaskManagerWindow
+from .roadmap import RoadmapWindow
 
 __all__ = [
     "LoginWindow",
@@ -18,4 +19,5 @@ __all__ = [
     "AdminWindow",
     "SettingsWindow",
     "TaskManagerWindow",
+    "RoadmapWindow",
 ]

@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS projects (
     description TEXT,
     status TEXT,
     workspace TEXT,
+    roadmap TEXT,
     FOREIGN KEY(owner_id) REFERENCES users(id)
 );
 
@@ -53,6 +54,10 @@ def init_db(db_path: Path) -> None:
         conn.executescript(SCHEMA)
         try:
             conn.execute("ALTER TABLE projects ADD COLUMN workspace TEXT")
+        except sqlite3.OperationalError:
+            pass
+        try:
+            conn.execute("ALTER TABLE projects ADD COLUMN roadmap TEXT")
         except sqlite3.OperationalError:
             pass
         conn.commit()

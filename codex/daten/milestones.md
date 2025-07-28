@@ -68,14 +68,14 @@
 - [x] Pfadverwaltung und DB-Eintrag für den Workspace ergänzen
 
 ## Milestone 13: Dynamische Roadmap & Queen-Dialog
-- [ ] Queen erzeugt aus der Nutzeridee automatisch ein vollständiges Konzept
+- [x] Queen erzeugt aus der Nutzeridee automatisch ein vollständiges Konzept
   (Funktionsübersicht, Struktur und Technologieeinsatz).
-- [ ] Generierte Roadmap mit Meilensteinen und Subtasks dauerhaft speichern
+- [x] Generierte Roadmap mit Meilensteinen und Subtasks dauerhaft speichern
   (JSON-Datei und DB-Eintrag).
-- [ ] GUI zeigt eine Live-Roadmap-Ansicht mit Status (offen/in Arbeit/erledigt).
-- [ ] Queen überwacht die Roadmap und markiert erledigte Punkte automatisch.
-- [ ] Änderungswünsche lassen sich über Chat oder Spracheingabe einreichen.
-- [ ] Nach Bestätigung durch die Queen wird die Roadmap angepasst und erneut
+- [x] GUI zeigt eine Live-Roadmap-Ansicht mit Status (offen/in Arbeit/erledigt).
+- [x] Queen überwacht die Roadmap und markiert erledigte Punkte automatisch.
+- [x] Änderungswünsche lassen sich über Chat oder Spracheingabe einreichen.
+- [x] Nach Bestätigung durch die Queen wird die Roadmap angepasst und erneut
   gespeichert.
 
 ## Milestone 14: Zauberstab - automatische Feature-Innovation

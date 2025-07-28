@@ -1,6 +1,12 @@
 from __future__ import annotations
 
-from db import add_message, get_tasks, create_task, update_task_status
+from db import (
+    add_message,
+    get_tasks,
+    create_task,
+    update_task_status,
+    get_project,
+)
 from typing import Dict
 from pathlib import Path
 
@@ -12,6 +18,7 @@ from .agents import (
     TestWorker,
 )
 from services import run_flow
+from .roadmap import load_roadmap, save_roadmap, mark_task_done
 import threading
 import time
 
@@ -35,7 +42,7 @@ class AIController:
         self.running = True
         add_message(self.conn, project_id, "system", f"Starting project: {idea}")
         if self.queen:
-            self.queen.plan_project(project_id, idea)
+            self.queen.plan_project(project_id, idea, workspace)
         for task in get_tasks(self.conn, project_id):
             while self._pause.is_set():
                 time.sleep(0.1)
@@ -56,6 +63,15 @@ class AIController:
             if self.tester and code is not None:
                 status = self.tester.run_tests(project_id, task["id"], code)
             update_task_status(self.conn, test_id, status)
+            try:
+                row = get_project(self.conn, project_id)
+                if row and row["roadmap"]:
+                    path = Path(row["roadmap"])
+                    data = load_roadmap(path)
+                    mark_task_done(data, task["description"])
+                    save_roadmap(data, path)
+            except Exception:
+                pass
 
         # run additional orchestration via Claude-Flow CLI
         try:

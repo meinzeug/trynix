@@ -28,3 +28,4 @@
 - 2025-08-12: Milestone 10 umgesetzt: automatische Queen-TTS mit einstellbarer Option im Settings-Fenster.
 - 2025-08-13: Milestone 11 abgeschlossen: Agenten-Plugin-System um Beispiel-Plugin `custom_agent` erweitert.
 - 2025-08-14: Milestone 12 umgesetzt: Projekt-Workspace mit Live-Dateibaum und ZIP-Export hinzugefügt.
+- 2025-08-15: Milestone 13 umgesetzt: dynamische Roadmap mit GUI-Ansicht und Chat-Integration.

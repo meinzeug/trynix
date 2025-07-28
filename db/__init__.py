@@ -58,12 +58,13 @@ def create_project(
     name: str,
     description: str = "",
     workspace: str | None = None,
+    roadmap: str | None = None,
 ) -> None:
     """Create a project for the given owner."""
     with conn:
         conn.execute(
-            "INSERT INTO projects (owner_id, name, description, status, workspace) VALUES (?, ?, ?, ?, ?)",
-            (owner_id, name, description, "new", workspace),
+            "INSERT INTO projects (owner_id, name, description, status, workspace, roadmap) VALUES (?, ?, ?, ?, ?, ?)",
+            (owner_id, name, description, "new", workspace, roadmap),
         )
 
 
@@ -84,7 +85,7 @@ def get_projects(
 def get_project(conn: sqlite3.Connection, project_id: int) -> sqlite3.Row | None:
     """Return a single project by id."""
     return conn.execute(
-        "SELECT id, name, workspace FROM projects WHERE id=?",
+        "SELECT id, name, workspace, roadmap FROM projects WHERE id=?",
         (project_id,),
     ).fetchone()
 
@@ -95,6 +96,15 @@ def set_project_workspace(conn: sqlite3.Connection, project_id: int, workspace: 
         conn.execute(
             "UPDATE projects SET workspace=? WHERE id=?",
             (workspace, project_id),
+        )
+
+
+def set_project_roadmap(conn: sqlite3.Connection, project_id: int, roadmap: str) -> None:
+    """Store roadmap path for a project."""
+    with conn:
+        conn.execute(
+            "UPDATE projects SET roadmap=? WHERE id=?",
+            (roadmap, project_id),
         )
 
 

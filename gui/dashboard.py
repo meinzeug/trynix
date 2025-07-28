@@ -10,6 +10,7 @@ from services import start_share, stop_share
 from .chat import ChatWindow
 from .codeviewer import CodeViewer
 from .workspace import WorkspaceViewer
+from .roadmap import RoadmapWindow
 from .status import StatusWindow
 from .admin import AdminWindow
 from .settings import SettingsWindow
@@ -32,6 +33,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.chat_btn = QtWidgets.QPushButton("Open Chat")
         self.code_btn = QtWidgets.QPushButton("View Code")
         self.workspace_btn = QtWidgets.QPushButton("Workspace")
+        self.roadmap_btn = QtWidgets.QPushButton("Roadmap")
         self.status_btn = QtWidgets.QPushButton("View Status")
         self.tasks_btn = QtWidgets.QPushButton("Manage Tasks")
         self.run_btn = QtWidgets.QPushButton("Run AI")
@@ -54,6 +56,7 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
         layout.addWidget(self.workspace_btn)
+        layout.addWidget(self.roadmap_btn)
         layout.addWidget(self.tasks_btn)
         layout.addWidget(self.status_btn)
         layout.addWidget(self.status_label)
@@ -71,6 +74,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
         self.workspace_btn.clicked.connect(self.open_workspace)
+        self.roadmap_btn.clicked.connect(self.open_roadmap)
         self.status_btn.clicked.connect(self.view_status)
         self.settings_btn.clicked.connect(self.open_settings)
         self.admin_btn.clicked.connect(self.open_admin)
@@ -123,6 +127,12 @@ class Dashboard(QtWidgets.QMainWindow):
                 QtWidgets.QMessageBox.information(
                     self, "Workspace", "No workspace available for this project"
                 )
+
+    def open_roadmap(self) -> None:
+        project_id = self.selected_project_id()
+        if project_id is not None:
+            win = RoadmapWindow(self.conn, project_id)
+            win.show()
 
     def view_status(self) -> None:
         project_id = self.selected_project_id()
