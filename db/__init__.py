@@ -222,3 +222,20 @@ def update_task_description(
             (description, task_id),
         )
 
+
+def save_context_db(conn: sqlite3.Connection, data: str) -> None:
+    """Persist context JSON in the database."""
+    with conn:
+        conn.execute(
+            "INSERT OR REPLACE INTO context (key, data) VALUES ('state', ?)",
+            (data,),
+        )
+
+
+def load_context_db(conn: sqlite3.Connection) -> str | None:
+    """Load context JSON from the database if available."""
+    row = conn.execute("SELECT data FROM context WHERE key='state'").fetchone()
+    if row is None:
+        return None
+    return row[0] if isinstance(row, tuple) else row["data"]
+

@@ -101,3 +101,4 @@ Die Anwendung verwaltet alle relevanten Zustände in einer globalen Kontextstruk
 - `user_actions` – manuelle Eingriffe und Entscheidungen des Nutzers
 
 Die Struktur wird bei jedem Ereignis automatisch fortgeschrieben und lässt sich über eine API lesen oder aktualisieren. Optional können die Daten zusätzlich in der Datenbank gesichert werden.
+Ein kleines Fenster in der GUI zeigt den Inhalt von `context_state.json` live an.

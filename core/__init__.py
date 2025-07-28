@@ -3,6 +3,12 @@ from .logger import init_logging
 from .agents import Queen, HiveWorker
 from .controller import AIController
 from .roadmap import load_roadmap, save_roadmap, mark_task_done
+from .context import (
+    ContextState,
+    load_context,
+    save_context,
+    append_entry,
+)
 
 __all__ = [
     "Config",
@@ -15,4 +21,8 @@ __all__ = [
     "load_roadmap",
     "save_roadmap",
     "mark_task_done",
+    "ContextState",
+    "load_context",
+    "save_context",
+    "append_entry",
 ]

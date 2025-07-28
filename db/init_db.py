@@ -45,6 +45,11 @@ CREATE TABLE IF NOT EXISTS messages (
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(project_id) REFERENCES projects(id)
 );
+
+CREATE TABLE IF NOT EXISTS context (
+    key TEXT PRIMARY KEY,
+    data TEXT
+);
 """
 
 def init_db(db_path: Path) -> None:

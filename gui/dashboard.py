@@ -40,6 +40,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.chat_btn = QtWidgets.QPushButton("Open Chat")
         self.code_btn = QtWidgets.QPushButton("View Code")
         self.workspace_btn = QtWidgets.QPushButton("Workspace")
+        self.context_btn = QtWidgets.QPushButton("Context")
         self.roadmap_btn = QtWidgets.QPushButton("Roadmap")
         self.status_btn = QtWidgets.QPushButton("View Status")
         self.tasks_btn = QtWidgets.QPushButton("Manage Tasks")
@@ -68,6 +69,7 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
         layout.addWidget(self.workspace_btn)
+        layout.addWidget(self.context_btn)
         layout.addWidget(self.roadmap_btn)
         layout.addWidget(self.tasks_btn)
         layout.addWidget(self.agents_btn)
@@ -90,6 +92,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
         self.workspace_btn.clicked.connect(self.open_workspace)
+        self.context_btn.clicked.connect(self.open_context)
         self.roadmap_btn.clicked.connect(self.open_roadmap)
         self.status_btn.clicked.connect(self.view_status)
         self.settings_btn.clicked.connect(self.open_settings)
@@ -144,6 +147,13 @@ class Dashboard(QtWidgets.QMainWindow):
                 QtWidgets.QMessageBox.information(
                     self, "Workspace", "No workspace available for this project"
                 )
+
+    def open_context(self) -> None:
+        from core.context import CONTEXT_FILE
+        from .context_viewer import ContextWindow
+
+        win = ContextWindow(CONTEXT_FILE)
+        win.show()
 
     def open_wand(self) -> None:
         project_id = self.selected_project_id()
