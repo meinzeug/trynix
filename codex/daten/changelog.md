@@ -46,3 +46,4 @@
 - 2025-08-25: Milestone 19 umgesetzt: Controller lädt registrierte Agenten
   dynamisch, Dashboard erlaubt Aktivieren und Deaktivieren. Dokumentation
   aktualisiert.
+- 2025-08-26: Milestone 20 umgesetzt: zentrale Kontext-Engine mit JSON-Datei, optionaler DB-Speicherung und GUI-Viewer implementiert.

@@ -12,6 +12,7 @@ from .wand import WandWindow
 from .agent_creator import AgentCreatorDialog
 from .tool_editor import ToolEditorDialog
 from .agent_manager import AgentManagerDialog
+from .context_viewer import ContextWindow
 
 __all__ = [
     "LoginWindow",
@@ -28,4 +29,5 @@ __all__ = [
     "AgentCreatorDialog",
     "ToolEditorDialog",
     "AgentManagerDialog",
+    "ContextWindow",
 ]
