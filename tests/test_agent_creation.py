@@ -16,3 +16,10 @@ def test_plugin_register(tmp_path):
     plugin = Plugin(path)
     plugin.register(None)
     assert "beta" in AGENT_REGISTRY
+
+
+def test_agent_with_tools(tmp_path):
+    path = tmp_path / "agents.yaml"
+    add_agent({"name": "gamma", "description": "", "specialization": "", "abilities": "", "tools": "lint"}, path)
+    agents = load_agents(path)
+    assert agents[0]["tools"] == "lint"

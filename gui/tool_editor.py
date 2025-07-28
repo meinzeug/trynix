@@ -1,26 +1,25 @@
 from __future__ import annotations
 
 from PySide6 import QtWidgets
-from core.agent_store import add_agent
+
+from core.tool_store import add_tool
 
 
-class AgentCreatorDialog(QtWidgets.QDialog):
+class ToolEditorDialog(QtWidgets.QDialog):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
-        self.setWindowTitle("Create Agent")
+        self.setWindowTitle("Create Tool")
 
         self.name_edit = QtWidgets.QLineEdit()
         self.desc_edit = QtWidgets.QLineEdit()
-        self.spec_edit = QtWidgets.QLineEdit()
-        self.abilities_edit = QtWidgets.QLineEdit()
-        self.tools_edit = QtWidgets.QLineEdit()
+        self.cmd_edit = QtWidgets.QLineEdit()
+        self.params_edit = QtWidgets.QLineEdit()
 
         form = QtWidgets.QFormLayout(self)
         form.addRow("Name", self.name_edit)
         form.addRow("Beschreibung", self.desc_edit)
-        form.addRow("Spezialisierung", self.spec_edit)
-        form.addRow("F\xc3\xa4higkeiten", self.abilities_edit)
-        form.addRow("Tools", self.tools_edit)
+        form.addRow("Kommando", self.cmd_edit)
+        form.addRow("Parameter", self.params_edit)
 
         save_btn = QtWidgets.QPushButton("Save")
         form.addWidget(save_btn)
@@ -31,17 +30,16 @@ class AgentCreatorDialog(QtWidgets.QDialog):
         if not name:
             QtWidgets.QMessageBox.warning(self, "Input", "Name required")
             return
-        agent = {
+        tool = {
             "name": name,
             "description": self.desc_edit.text().strip(),
-            "specialization": self.spec_edit.text().strip(),
-            "abilities": self.abilities_edit.text().strip(),
-            "tools": self.tools_edit.text().strip(),
+            "command": self.cmd_edit.text().strip(),
+            "params": self.params_edit.text().strip(),
         }
         try:
-            add_agent(agent)
+            add_tool(tool)
         except ValueError as exc:
-            QtWidgets.QMessageBox.warning(self, "Agent", str(exc))
+            QtWidgets.QMessageBox.warning(self, "Tool", str(exc))
             return
-        QtWidgets.QMessageBox.information(self, "Agent", "Saved")
+        QtWidgets.QMessageBox.information(self, "Tool", "Saved")
         self.accept()

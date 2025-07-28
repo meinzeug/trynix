@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from PySide6 import QtWidgets
 from .agent_creator import AgentCreatorDialog
+from .tool_editor import ToolEditorDialog
 
 from db import get_users, delete_user
 
@@ -21,11 +22,13 @@ class AdminWindow(QtWidgets.QWidget):
         self.refresh_btn = QtWidgets.QPushButton("Refresh")
         self.delete_btn = QtWidgets.QPushButton("Delete")
         self.new_agent_btn = QtWidgets.QPushButton("New Agent")
+        self.new_tool_btn = QtWidgets.QPushButton("New Tool")
 
         btn_layout = QtWidgets.QHBoxLayout()
         btn_layout.addWidget(self.refresh_btn)
         btn_layout.addWidget(self.delete_btn)
         btn_layout.addWidget(self.new_agent_btn)
+        btn_layout.addWidget(self.new_tool_btn)
 
         layout = QtWidgets.QVBoxLayout(self)
         layout.addWidget(self.table)
@@ -34,6 +37,7 @@ class AdminWindow(QtWidgets.QWidget):
         self.refresh_btn.clicked.connect(self.load_users)
         self.delete_btn.clicked.connect(self.delete_selected)
         self.new_agent_btn.clicked.connect(self.create_agent)
+        self.new_tool_btn.clicked.connect(self.create_tool)
 
         self.load_users()
 
@@ -58,4 +62,8 @@ class AdminWindow(QtWidgets.QWidget):
 
     def create_agent(self) -> None:
         dlg = AgentCreatorDialog(self)
+        dlg.exec()
+
+    def create_tool(self) -> None:
+        dlg = ToolEditorDialog(self)
         dlg.exec()
