@@ -40,3 +40,6 @@
 - 2025-08-22: Umsetzung und Tests von Milestone 15 und 16 verifiziert.
 - 2025-08-23: Milestone 17 umgesetzt: Agenten lassen sich per Dialog anlegen,
   Definitionen werden in `agents.yaml` gespeichert und beim Start geladen.
+- 2025-08-24: Milestone 18 abgeschlossen: Tool-Baukasten mit Editor,
+  YAML-Speicherung und automatischer Registrierung. Agenten können
+  Tools über die UI zugeordnet werden; neue Tests decken diese Funktion ab.
