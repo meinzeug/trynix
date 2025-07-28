@@ -8,3 +8,4 @@
 - Milestone 3 begonnen: OpenRouter- und Claude-Flow-Services sowie Agenten-Grundklassen implementiert.
 - Milestone 3 fortgefuehrt: AIController zum Orchestrieren von Queen und Hive hinzugefuegt. Dashboard startet nun die KI fuer ein Projekt.
 - Milestone 5 begonnen: STT-Modul mit Mikrofon-Button im Chat implementiert.
+- Claude-Flow-Integration erweitert: AIController startet nach der Codegenerierung einen Hive-Mind-Lauf und schreibt die Ausgabe ins Nachrichtenlog.

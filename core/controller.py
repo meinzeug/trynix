@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from db import add_message, get_tasks
 from .agents import Queen, HiveWorker
+from services import run_flow
 
 
 class AIController:
@@ -18,4 +19,12 @@ class AIController:
         self.queen.plan_project(project_id, idea)
         for task in get_tasks(self.conn, project_id):
             self.worker.execute_task(task["id"], project_id, task["description"])
+
+        # run additional orchestration via Claude-Flow CLI
+        try:
+            output = run_flow(["npx", "claude-flow@alpha", "hive-mind", "wizard", "--force"])
+            add_message(self.conn, project_id, "claude-flow", output)
+        except Exception as exc:  # subprocess.CalledProcessError etc.
+            add_message(self.conn, project_id, "error", str(exc))
+
         add_message(self.conn, project_id, "system", "All tasks completed")

@@ -27,6 +27,7 @@
 ### Claude-Flow
 - Lokale CLI-Aufrufe (z.B. `claude-flow@alpha hive-mind wizard --force`)
 - Rueckgabedaten werden ueber `subprocess` gelesen und verarbeitet
+- Der `AIController` startet nach der Codegenerierung automatisch einen Hive-Mind-Lauf und protokolliert die Ausgabe
 
 ## Ablaeufe
 1. Benutzer meldet sich in der GUI an (Datenbank `users`)
