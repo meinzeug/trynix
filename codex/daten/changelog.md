@@ -6,3 +6,4 @@
 
 - 2025-07-28: Milestone 2 begonnen: GUI-Skelett mit Login und Dashboard implementiert.
 - 2025-07-29: Chat- und Code-Viewer-Fenster hinzugefuegt. Dashboard startet sie fuer das ausgewaehlte Projekt.
+- 2025-07-30: Milestone 3 gestartet: Services fuer OpenRouter und Claude-Flow, Agentengeruest und Taskfunktionen hinzugefuegt.
