@@ -47,3 +47,31 @@ def test_delete_project(tmp_path):
     delete_project(conn, pid)
     row = conn.execute("SELECT id FROM projects WHERE id=?", (pid,)).fetchone()
     assert row is None
+
+
+def test_dashboard_permissions(monkeypatch, tmp_path):
+    import pytest
+    try:
+        from PySide6 import QtWidgets
+    except Exception as exc:
+        pytest.skip(str(exc))
+    from gui.dashboard import Dashboard
+
+    app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
+
+    conn = setup_db(tmp_path)
+    create_user(conn, "bob", "pwd", role="user")
+    create_project(conn, 1, "proj")
+    row = conn.execute("SELECT id FROM projects WHERE name='proj'").fetchone()
+    pid = row["id"]
+
+    dash = Dashboard(conn, user_id=1, username="bob", role="user")
+    dash.selected_project_id = lambda: pid
+
+    warnings = []
+    monkeypatch.setattr(QtWidgets.QMessageBox, "warning", lambda *a, **k: warnings.append(True))
+
+    dash.delete_project()
+    assert warnings
+    row = conn.execute("SELECT id FROM projects WHERE id=?", (pid,)).fetchone()
+    assert row is not None
