@@ -56,3 +56,11 @@
 - Die GUI zeigt den Ordner mit `QFileSystemModel` live an und aktualisiert sich bei Änderungen.
 - Beim Anklicken einer Datei öffnet sich ein schreibgeschützter Editor mit Syntaxhighlighting.
 - Über einen Export-Button wird der Projektordner mit `shutil.make_archive` als ZIP gepackt und kann gespeichert werden.
+
+## Dynamische Roadmap & Queen-Dialog
+- Nach der Projektanlage erzeugt die Queen automatisch ein Konzept und eine detaillierte Roadmap.
+- Diese Roadmap wird als `roadmap.json` im jeweiligen Projektordner gespeichert und in der Tabelle `projects` verlinkt.
+- Sie enthält Meilensteine und Unteraufgaben mit den Stati `open`, `in_progress` und `done`.
+- Änderungen durch die Queen aktualisieren sowohl die JSON-Datei als auch die Datenbank.
+- In der GUI erscheint eine eigene Ansicht (z. B. Sidebar mit `QTreeView`), die den aktuellen Stand der Roadmap live anzeigt.
+- Nutzer können per Chat oder Spracheingabe Änderungswünsche einreichen; nach Bestätigung passt die Queen die Roadmap an und speichert sie erneut.
