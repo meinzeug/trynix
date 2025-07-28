@@ -14,3 +14,4 @@
 - 2025-08-02: Automatisches Abhaken der Milestones implementiert.
 - 2025-08-03: TestWorker fuehrt nach jeder Codegenerierung einen Syntaxcheck
   aus und protokolliert das Ergebnis. Milestone 4 Test-Tasks abgeschlossen.
+- 2025-08-04: Live-Status-Anzeige fuer Agenten implementiert.

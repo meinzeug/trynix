@@ -19,6 +19,7 @@ class AIController:
         add_message(self.conn, project_id, "system", f"Starting project: {idea}")
         self.queen.plan_project(project_id, idea)
         for task in get_tasks(self.conn, project_id):
+            update_task_status(self.conn, task["id"], "running")
             code = self.worker.execute_task(task["id"], project_id, task["description"])
             test_id = create_task(
                 self.conn,

@@ -18,7 +18,7 @@ DONE_PREFIXES = {
     "Chat-/Log-Ansicht": True,
     "STT-Modul": True,
     "Mikrofon-Button": True,
-    "Live-Status": False,
+    "Live-Status": True,
     "Mehrere Projekte parallel": False,
     "Rollen-/Rechtesystem": False,
     "Sicheres API-Key-Handling": True,

@@ -14,3 +14,4 @@
 - TestWorker implementiert: Fuehrt Syntaxchecks nach jeder Codegenerierung aus
   und schreibt das Ergebnis ins Chatlog. Milestone 4 "Test-Tasks" damit
   abgeschlossen.
+- Live-Status-Anzeige fuer Agenten im Dashboard umgesetzt.
