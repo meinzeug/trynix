@@ -43,6 +43,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.roadmap_btn = QtWidgets.QPushButton("Roadmap")
         self.status_btn = QtWidgets.QPushButton("View Status")
         self.tasks_btn = QtWidgets.QPushButton("Manage Tasks")
+        self.agents_btn = QtWidgets.QPushButton("Manage Agents")
         self.run_btn = QtWidgets.QPushButton("Run AI")
         self.pause_btn = QtWidgets.QPushButton("Pause")
         self.resume_btn = QtWidgets.QPushButton("Resume")
@@ -69,6 +70,7 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.workspace_btn)
         layout.addWidget(self.roadmap_btn)
         layout.addWidget(self.tasks_btn)
+        layout.addWidget(self.agents_btn)
         layout.addWidget(self.status_btn)
         layout.addWidget(self.status_label)
         if role == "admin":
@@ -82,6 +84,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.pause_btn.clicked.connect(self.pause_ai)
         self.resume_btn.clicked.connect(self.resume_ai)
         self.tasks_btn.clicked.connect(self.manage_tasks)
+        self.agents_btn.clicked.connect(self.manage_agents)
         self.share_btn.clicked.connect(self.share_project)
         self.wand_btn.clicked.connect(self.open_wand)
         self.chat_btn.clicked.connect(self.open_chat)
@@ -221,6 +224,14 @@ class Dashboard(QtWidgets.QMainWindow):
         if project_id is not None:
             win = TaskManagerWindow(self.conn, project_id)
             win.show()
+
+    def manage_agents(self) -> None:
+        from .agent_manager import AgentManagerDialog
+
+        dlg = AgentManagerDialog(self)
+        dlg.exec()
+        if self.controller:
+            self.controller.refresh_agents()
 
     def delete_project(self) -> None:
         if self.role != "admin":

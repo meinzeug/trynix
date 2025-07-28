@@ -118,10 +118,10 @@
 - [x] Tests für Tool-Verwaltung und -Zuordnung
 
 ## Milestone 19: Integration in Queen- und Agentensystem
-- [ ] Queen lädt neue Agenten automatisch und aktiviert sie
-- [ ] Deaktivierung einzelner Agenten über die GUI
-- [ ] Controller erlaubt dynamische Auswahl aller registrierten Agenten
-- [ ] Dokumentation aktualisieren und Beispiele ergänzen
+- [x] Queen lädt neue Agenten automatisch und aktiviert sie
+- [x] Deaktivierung einzelner Agenten über die GUI
+- [x] Controller erlaubt dynamische Auswahl aller registrierten Agenten
+- [x] Dokumentation aktualisieren und Beispiele ergänzen
 
 
 ## Milestone 20: Zentrale Kontext-Engine

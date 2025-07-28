@@ -43,3 +43,6 @@
 - 2025-08-24: Milestone 18 abgeschlossen: Tool-Baukasten mit Editor,
   YAML-Speicherung und automatischer Registrierung. Agenten können
   Tools über die UI zugeordnet werden; neue Tests decken diese Funktion ab.
+- 2025-08-25: Milestone 19 umgesetzt: Controller lädt registrierte Agenten
+  dynamisch, Dashboard erlaubt Aktivieren und Deaktivieren. Dokumentation
+  aktualisiert.

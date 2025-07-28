@@ -11,6 +11,7 @@ from .roadmap import RoadmapWindow
 from .wand import WandWindow
 from .agent_creator import AgentCreatorDialog
 from .tool_editor import ToolEditorDialog
+from .agent_manager import AgentManagerDialog
 
 __all__ = [
     "LoginWindow",
@@ -26,4 +27,5 @@ __all__ = [
     "WandWindow",
     "AgentCreatorDialog",
     "ToolEditorDialog",
+    "AgentManagerDialog",
 ]

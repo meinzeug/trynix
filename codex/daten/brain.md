@@ -50,3 +50,5 @@
 - Milestone 18 umgesetzt: Tool-Editor erstellt, Tools werden persistent in
   `tools.yaml` gespeichert und beim Start registriert. Der Agenten-Dialog zeigt
   verfügbare Tools zur Auswahl und Tests prüfen Registrierung und Zuordnung.
+- Milestone 19 umgesetzt: Controller lädt alle registrierten Agenten dynamisch,
+  Dashboard bietet einen Dialog zum Aktivieren oder Deaktivieren.
