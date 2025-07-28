@@ -39,3 +39,4 @@
 - Milestone 12 umgesetzt: Workspace-Verzeichnis pro Projektlauf mit Live-Dateibaum und ZIP-Export implementiert.
 - Milestone 13 umgesetzt: Queen erstellt Roadmap, GUI zeigt Fortschritt und Chat kann Änderungen übernehmen.
 - Milestone 14 begonnen: Zauberstab-Funktion implementiert, Feature Wizard erstellt.
+- Konzeptabgleich 2025-08-18: README verlangt Admin-Rechte fuer Projektloeschung und Konfiguration. Funktion fehlt. Milestone 15 angelegt.

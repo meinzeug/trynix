@@ -88,3 +88,10 @@
 - [x] Ergebnis und Aktionen im Chat/Log dokumentieren
 - [x] Tests und Dokumentation der Funktion anlegen
 
+
+## Milestone 15: Admin-Rechte fuer Projekte und Konfiguration
+- [ ] Funktion `delete_project` im Modul `db` implementieren
+- [ ] Loeschoption im Dashboard integrieren; Button nur fuer Admin sichtbar
+- [ ] Zugriff auf das Settings-Fenster auf Admins beschraenken
+- [ ] Tests fuer Projektloeschung und Berechtigungen erstellen
+- [ ] Dokumentation und brain.md um neue Admin-Features ergaenzen
