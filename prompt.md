@@ -1,6 +1,6 @@
-Codex, beginne mit der Umsetzung des Zauberstab-Features aus Milestone 14.
+Codex, beginne mit der Umsetzung des Live-Projekt-Workspace-Features aus Milestone 12.
 Fokus:
-- Zauberstab-Icon in der GUI integrieren
-- Analyse der Codebasis und Roadmap durch die Queen
-- Anzeige von Feature-Vorschlägen mit Option, sie direkt in milestones.md zu übernehmen
-- Automatische Erstellung neuer Milestones bei Auswahl
+- Zentrales Verzeichnis `workspace/` anlegen und Unterordner je Projekt erzeugen
+- Live-Dateiansicht mit `QFileSystemModel` in der GUI
+- Dateien schreibgeschuetzt im Editor darstellen
+- ZIP-Export des Projektordners implementieren
