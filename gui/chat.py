@@ -4,7 +4,7 @@ from PySide6 import QtWidgets
 
 from db import add_message, get_messages
 
-from speech import transcribe_from_microphone
+from speech import transcribe_from_microphone, speak
 
 class ChatWindow(QtWidgets.QWidget):
     def __init__(self, conn, project_id: int) -> None:
@@ -17,10 +17,12 @@ class ChatWindow(QtWidgets.QWidget):
         self.input_edit = QtWidgets.QLineEdit()
         self.send_btn = QtWidgets.QPushButton("Send")
         self.mic_btn = QtWidgets.QPushButton("🎤")
+        self.tts_btn = QtWidgets.QPushButton("🔈")
 
         input_layout = QtWidgets.QHBoxLayout()
         input_layout.addWidget(self.input_edit)
         input_layout.addWidget(self.mic_btn)
+        input_layout.addWidget(self.tts_btn)
         input_layout.addWidget(self.send_btn)
 
         layout = QtWidgets.QVBoxLayout(self)
@@ -29,6 +31,7 @@ class ChatWindow(QtWidgets.QWidget):
 
         self.send_btn.clicked.connect(self.send_message)
         self.mic_btn.clicked.connect(self.fill_from_speech)
+        self.tts_btn.clicked.connect(self.speak_last)
         self.load_messages()
 
     def load_messages(self) -> None:
@@ -49,5 +52,12 @@ class ChatWindow(QtWidgets.QWidget):
                 self.input_edit.setText(text)
         except Exception as exc:
             QtWidgets.QMessageBox.warning(self, "STT Error", str(exc))
+
+    def speak_last(self) -> None:
+        text = self.input_edit.text().strip()
+        if not text:
+            text = self.messages_view.toPlainText().splitlines()[-1] if self.messages_view.toPlainText() else ""
+        if text:
+            speak(text)
 
 

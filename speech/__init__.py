@@ -1,8 +1,9 @@
-"""Speech-to-text helpers for trynix."""
+"""Speech helpers for trynix."""
 
 from __future__ import annotations
 
 import speech_recognition as sr
+from .tts import speak
 
 
 def transcribe_from_microphone(timeout: int = 5) -> str:
@@ -18,3 +19,5 @@ def transcribe_from_microphone(timeout: int = 5) -> str:
     with sr.Microphone() as source:
         audio = recognizer.listen(source, phrase_time_limit=timeout)
     return recognizer.recognize_google(audio)
+
+__all__ = ["transcribe_from_microphone", "speak"]

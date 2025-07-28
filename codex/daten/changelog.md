@@ -17,3 +17,5 @@
 - 2025-08-04: Live-Status-Anzeige fuer Agenten implementiert.
 - 2025-08-05: Milestone 6 umgesetzt: Projekte sind nun Benutzern zugeordnet, das
   Rollen-/Rechtesystem (Admin/User) wurde integriert.
+- 2025-08-06: Milestone 7 gestartet: Plugin-System, Darkmode-Plugin, TTS und
+  PyInstaller-Build-Skript hinzugefuegt.

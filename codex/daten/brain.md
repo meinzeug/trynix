@@ -19,3 +19,7 @@
   das Dashboard zeigt je nach Rolle nur eigene oder alle Projekte an.
 - Rollen-/Rechtesystem implementiert (Admin/User) und Login gibt Rolle sowie
   User-ID zurueck.
+- Plugin-System vorbereitet: Plugins koennen sich bei Start registrieren.
+- Beispiel-Darkmode-Plugin erstellt und per Loader eingebunden.
+- TTS-Unterstuetzung fuer Chatnachrichten implementiert.
+- Build-Skript fuer PyInstaller hinzugefuegt.

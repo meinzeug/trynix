@@ -7,6 +7,7 @@ from core.logger import init_logging
 from db import connect
 from db.init_db import init_db
 from gui import Dashboard, LoginWindow
+from core.plugins import load_plugins
 
 
 def main() -> None:
@@ -16,6 +17,7 @@ def main() -> None:
     conn = connect(config.db_path)
 
     app = QtWidgets.QApplication([])
+    load_plugins(app)
     login = LoginWindow(conn)
     if login.exec() == QtWidgets.QDialog.Accepted and login.username:
         window = Dashboard(conn, login.user_id, login.username, login.role or "user")

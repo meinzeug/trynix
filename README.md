@@ -154,10 +154,10 @@ Installer-Pakete für Windows/Linux können generiert und veröffentlicht werden
 
 ## 📈 Geplante Features
 
-- [ ] TTS für Sprachausgabe der Queen
+- [x] TTS für Sprachausgabe der Queen
 - [ ] Projekt-Sharing über LAN
-- [ ] Themes/Darkmode
-- [ ] Plugin-System für eigene Agenten
+- [x] Themes/Darkmode
+- [x] Plugin-System für eigene Agenten
 
 ---
 
