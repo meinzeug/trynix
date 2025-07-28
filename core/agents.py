@@ -13,6 +13,7 @@ from pathlib import Path
 
 from speech import speak
 from core.config import CONFIG
+from typing import Dict, Type
 
 
 class BaseAgent:
@@ -80,3 +81,19 @@ class TestWorker(BaseAgent):
             f"Test result for task {task_id}: {status}\n{msg}",
         )
         return status
+
+
+# global registry for agent classes
+AGENT_REGISTRY: Dict[str, Type[BaseAgent]] = {}
+
+
+def register_agent(name: str, cls: Type[BaseAgent]) -> None:
+    """Register an agent class to be available for the controller."""
+
+    AGENT_REGISTRY[name] = cls
+
+
+# register built-in agents
+register_agent("queen", Queen)
+register_agent("hive", HiveWorker)
+register_agent("tester", TestWorker)

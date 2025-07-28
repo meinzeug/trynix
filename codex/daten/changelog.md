@@ -26,3 +26,4 @@
 - 2025-08-10: Milestone 8 begonnen: AIController pausierbar, Dashboard mit Pause/Resume-Buttons und Task-Manager.
 - 2025-08-11: Milestone 9 umgesetzt: Code-Viewer mit Syntaxhighlighting und Einzeldatei-Export.
 - 2025-08-12: Milestone 10 umgesetzt: automatische Queen-TTS mit einstellbarer Option im Settings-Fenster.
+- 2025-08-13: Milestone 11 abgeschlossen: Agenten-Plugin-System um Beispiel-Plugin `custom_agent` erweitert.
