@@ -22,7 +22,7 @@ Die Software führt ein ganzes KI-Entwicklungsteam – eine Projektleiterin-KI (
 
 ## 🧬 Architekturübersicht
 
-```mermaid
+```bash
 graph TD
     GUI[PySide6 GUI]
     Login[Login/Benutzer]
