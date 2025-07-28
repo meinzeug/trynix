@@ -155,9 +155,18 @@ Installer-Pakete für Windows/Linux können generiert und veröffentlicht werden
 ## 📈 Geplante Features
 
 - [x] TTS für Sprachausgabe der Queen
-- [ ] Projekt-Sharing über LAN
+- [x] Projekt-Sharing über LAN
 - [x] Themes/Darkmode
 - [x] Plugin-System für eigene Agenten
+
+---
+
+## 📡 Projekt-Sharing über LAN
+
+Ein Projekt lässt sich direkt im lokalen Netzwerk teilen. Im Dashboard auf
+**"Share Project"** klicken. Daraufhin startet ein kleiner HTTP-Server und zeigt
+die URL zum ZIP-Archiv an. Jeder im gleichen LAN kann dieses Archiv im Browser
+herunterladen.
 
 ---
 
