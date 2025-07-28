@@ -5,12 +5,23 @@ from tempfile import TemporaryDirectory
 from threading import Thread
 from pathlib import Path
 import zipfile
-from typing import Tuple
+from typing import NamedTuple
 
 from db import get_code_files
 
 
-def start_share(conn, project_id: int, host: str = "0.0.0.0", port: int = 8000) -> Tuple[HTTPServer, Thread, TemporaryDirectory, str]:
+class ShareInfo(NamedTuple):
+    """Information about a running share server."""
+
+    server: HTTPServer
+    thread: Thread
+    tmpdir: TemporaryDirectory
+    url: str
+
+
+def start_share(
+    conn, project_id: int, host: str = "0.0.0.0", port: int = 8000
+) -> ShareInfo:
     """Start a simple HTTP server to share project files as a ZIP archive.
 
     Returns ``(server, thread, tempdir, url)``. The caller must keep the returned
@@ -31,11 +42,13 @@ def start_share(conn, project_id: int, host: str = "0.0.0.0", port: int = 8000) 
     thread = Thread(target=httpd.serve_forever, daemon=True)
     thread.start()
     url = f"http://{host}:{port}/{zip_path.name}"
-    return httpd, thread, tmpdir, url
+    return ShareInfo(httpd, thread, tmpdir, url)
 
 
-def stop_share(server: HTTPServer, thread: Thread, tmpdir: TemporaryDirectory) -> None:
+def stop_share(info: ShareInfo) -> None:
     """Stop the running share server and clean up temporary files."""
+
+    server, thread, tmpdir, _ = info
     server.shutdown()
     thread.join()
     tmpdir.cleanup()
