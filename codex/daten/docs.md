@@ -81,3 +81,8 @@
 - Akzeptierte Vorschläge werden als neuer Milestone samt Subtasks an `milestones.md` angehängt und optional als Notiz in `brain.md` vermerkt.
 - Der gesamte Ablauf wird im Chat und den Logs dokumentiert und lässt sich später nachvollziehen.
 
+## Eigene Agenten & Tools
+Neue Agenten werden als Python-Klassen definiert, die `BaseAgent` erweitern. Eine YAML-Datei `agents.yaml` speichert Name, Beschreibung, Spezialisierung und optionale Fähigkeiten. Beim Start lädt ein Plugin diese Datei, erzeugt entsprechende Agentenklassen und meldet sie über `register_agent()` im System an.
+
+Tools sind ebenfalls per YAML konfigurierbar. Jede Definition enthält `name`, `description`, `command` und optionale Eingabeparameter. Die Agentenkonfiguration legt fest, welche Tools ein Agent verwenden darf. Beim Laden registriert das Plugin die Tools und ordnet sie den Agenten zu.
+

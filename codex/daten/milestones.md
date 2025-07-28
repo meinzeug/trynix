@@ -103,3 +103,23 @@
 - [ ] Authentifizierung mit bcrypt-Hashes prüfen
 - [ ] Tests für Registrierung, Login und Migration ergänzen
 - [ ] Dokumentation und changelog aktualisieren
+
+## Milestone 17: Agenten-Erstellung
+- [ ] Dialog "Agent anlegen" in der GUI bereitstellen
+- [ ] Backend-Routinen zum Speichern neuer Agenten (DB oder YAML)
+- [ ] Eingaben: Name, Beschreibung, Spezialisierung, Fähigkeiten
+- [ ] Validierung und Tests der Eingaben
+
+## Milestone 18: Tool-Baukasten & Registrierung
+- [ ] Editor zum Definieren neuer Tools (Name, Beschreibung, Kommando, Parameter)
+- [ ] Tools persistent speichern und beim App-Start laden
+- [ ] Zuordnung von Tools zu Agenten in der UI ermöglichen
+- [ ] Registrierung der Tools im System prüfen
+- [ ] Tests für Tool-Verwaltung und -Zuordnung
+
+## Milestone 19: Integration in Queen- und Agentensystem
+- [ ] Queen lädt neue Agenten automatisch und aktiviert sie
+- [ ] Deaktivierung einzelner Agenten über die GUI
+- [ ] Controller erlaubt dynamische Auswahl aller registrierten Agenten
+- [ ] Dokumentation aktualisieren und Beispiele ergänzen
+

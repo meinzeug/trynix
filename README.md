@@ -26,6 +26,9 @@ Die Software führt ein ganzes KI-Entwicklungsteam – eine Projektleiterin-KI (
 - 📂 **Live-Projekt-Workspace & ZIP-Export**
   Während die KI-Agenten ein neues Programm erzeugen, entstehen die Dateien live in einem sichtbaren Projektordner.
   Sobald das Projekt abgeschlossen ist, kann es direkt aus der App als ZIP-Datei exportiert werden.
+- 🧠 **Eigene KI-Agenten & Tools**
+  Die App bietet eine grafische Oberfläche zum Erstellen neuer Agenten und deren Werkzeuge.
+  Diese Agenten können spezialisierte Aufgaben übernehmen und nahtlos mit der Queen zusammenarbeiten.
 - **Plattformübergreifend**: Läuft auf Windows & Linux als PySide6 Desktop-App.
 
 ---
