@@ -8,4 +8,5 @@
 - 2025-07-29: Chat- und Code-Viewer-Fenster hinzugefuegt. Dashboard startet sie fuer das ausgewaehlte Projekt.
 - 2025-07-30: Milestone 3 gestartet: Services fuer OpenRouter und Claude-Flow, Agentengeruest und Taskfunktionen hinzugefuegt.
 - 2025-07-31: AIController implementiert und ins Dashboard integriert.
+- 2025-08-01: Claude-Flow-Integration im AIController, Dokumentation aktualisiert.
 - 2025-08-01: STT-Modul und Mikrofon-Button im Chatfenster integriert.
