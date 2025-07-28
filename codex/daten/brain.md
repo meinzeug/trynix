@@ -7,3 +7,4 @@
 - Milestone 2 erweitert: Chatfenster und Code-Viewer als einfache Widgets umgesetzt. Dashboard oeffnet sie projektbezogen.
 - Milestone 3 begonnen: OpenRouter- und Claude-Flow-Services sowie Agenten-Grundklassen implementiert.
 - Milestone 3 fortgefuehrt: AIController zum Orchestrieren von Queen und Hive hinzugefuegt. Dashboard startet nun die KI fuer ein Projekt.
+- Milestone 5 begonnen: STT-Modul mit Mikrofon-Button im Chat implementiert.
