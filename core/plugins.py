@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from importlib import import_module
 from pathlib import Path
-from typing import Iterable, List
+from typing import List
 
 
 PLUGINS_DIR = Path("plugins")
@@ -42,4 +42,3 @@ def load_plugins(app, plugins_dir: Path | str = PLUGINS_DIR) -> List[Plugin]:
             print(f"Failed to load plugin {module_name}: {exc}")
 
     return plugins
-
