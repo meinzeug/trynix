@@ -11,9 +11,11 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS projects (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    owner_id INTEGER,
     name TEXT NOT NULL,
     description TEXT,
-    status TEXT
+    status TEXT,
+    FOREIGN KEY(owner_id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS code_files (

@@ -15,3 +15,7 @@
   und schreibt das Ergebnis ins Chatlog. Milestone 4 "Test-Tasks" damit
   abgeschlossen.
 - Live-Status-Anzeige fuer Agenten im Dashboard umgesetzt.
+- Multi-Projekt-Verwaltung eingefuehrt: Projekte speichern nun den Besitzer und
+  das Dashboard zeigt je nach Rolle nur eigene oder alle Projekte an.
+- Rollen-/Rechtesystem implementiert (Admin/User) und Login gibt Rolle sowie
+  User-ID zurueck.

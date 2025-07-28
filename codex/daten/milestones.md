@@ -28,8 +28,8 @@
 - [x] Live-Status der Agenten anzeigen
 
 ## Milestone 6: Multi-Projekt und Benutzerrollen
-- [ ] Mehrere Projekte parallel verwalten
-- [ ] Rollen-/Rechtesystem (Admin, User)
+- [x] Mehrere Projekte parallel verwalten
+- [x] Rollen-/Rechtesystem (Admin, User)
 - [x] Sicheres API-Key-Handling und Passwort-Hashing
 
 ## Milestone 7: Deployment & Feinschliff

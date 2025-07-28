@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from PySide6 import QtWidgets
 
-from db import create_user, verify_user
+from db import create_user, authenticate_user
 
 
 class LoginWindow(QtWidgets.QDialog):
@@ -31,10 +31,17 @@ class LoginWindow(QtWidgets.QDialog):
         self.login_btn.clicked.connect(self.handle_login)
         self.register_btn.clicked.connect(self.handle_register)
         self.username: str | None = None
+        self.user_id: int | None = None
+        self.role: str | None = None
 
     def handle_login(self) -> None:
-        if verify_user(self.conn, self.username_edit.text(), self.password_edit.text()):
+        uid, role = authenticate_user(
+            self.conn, self.username_edit.text(), self.password_edit.text()
+        )
+        if uid is not None:
             self.username = self.username_edit.text()
+            self.user_id = uid
+            self.role = role
             self.accept()
         else:
             QtWidgets.QMessageBox.warning(self, "Error", "Invalid credentials")

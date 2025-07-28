@@ -23,27 +23,50 @@ def create_user(conn: sqlite3.Connection, username: str, password: str, role: st
             (username, password_hash, role),
         )
 
+def get_user(conn: sqlite3.Connection, user_id: int) -> sqlite3.Row | None:
+    return conn.execute(
+        "SELECT id, username, role FROM users WHERE id=?",
+        (user_id,),
+    ).fetchone()
 
-def verify_user(conn: sqlite3.Connection, username: str, password: str) -> bool:
+
+def authenticate_user(conn: sqlite3.Connection, username: str, password: str) -> tuple[int | None, str | None]:
+    """Return user id and role if credentials are valid, otherwise (None, None)."""
     row = conn.execute(
-        "SELECT password_hash FROM users WHERE username=?",
+        "SELECT id, password_hash, role FROM users WHERE username=?",
         (username,),
     ).fetchone()
-    if row is None:
-        return False
-    return row["password_hash"] == hash_password(password)
+    if row and row["password_hash"] == hash_password(password):
+        return row["id"], row["role"]
+    return None, None
 
 
-def create_project(conn: sqlite3.Connection, name: str, description: str = "") -> None:
+def create_project(
+    conn: sqlite3.Connection,
+    owner_id: int | None,
+    name: str,
+    description: str = "",
+) -> None:
+    """Create a project for the given owner."""
     with conn:
         conn.execute(
-            "INSERT INTO projects (name, description, status) VALUES (?, ?, ?)",
-            (name, description, "new"),
+            "INSERT INTO projects (owner_id, name, description, status) VALUES (?, ?, ?, ?)",
+            (owner_id, name, description, "new"),
         )
 
 
-def get_projects(conn: sqlite3.Connection) -> list[sqlite3.Row]:
-    return list(conn.execute("SELECT id, name FROM projects"))
+def get_projects(
+    conn: sqlite3.Connection, owner_id: int | None, role: str = "user"
+) -> list[sqlite3.Row]:
+    """Return projects owned by the user or all if admin."""
+    if role == "admin":
+        return list(conn.execute("SELECT id, name FROM projects"))
+    return list(
+        conn.execute(
+            "SELECT id, name FROM projects WHERE owner_id=?",
+            (owner_id,),
+        )
+    )
 
 
 def add_message(
