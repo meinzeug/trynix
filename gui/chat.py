@@ -1,0 +1,40 @@
+from __future__ import annotations
+
+from PySide6 import QtWidgets
+
+from db import add_message, get_messages
+
+
+class ChatWindow(QtWidgets.QWidget):
+    def __init__(self, conn, project_id: int) -> None:
+        super().__init__()
+        self.conn = conn
+        self.project_id = project_id
+        self.setWindowTitle("Chat")
+
+        self.messages_view = QtWidgets.QTextEdit(readOnly=True)
+        self.input_edit = QtWidgets.QLineEdit()
+        self.send_btn = QtWidgets.QPushButton("Send")
+
+        input_layout = QtWidgets.QHBoxLayout()
+        input_layout.addWidget(self.input_edit)
+        input_layout.addWidget(self.send_btn)
+
+        layout = QtWidgets.QVBoxLayout(self)
+        layout.addWidget(self.messages_view)
+        layout.addLayout(input_layout)
+
+        self.send_btn.clicked.connect(self.send_message)
+        self.load_messages()
+
+    def load_messages(self) -> None:
+        self.messages_view.clear()
+        for row in get_messages(self.conn, self.project_id):
+            self.messages_view.append(f"{row['timestamp']} {row['sender']}: {row['message']}")
+
+    def send_message(self) -> None:
+        text = self.input_edit.text().strip()
+        if text:
+            add_message(self.conn, self.project_id, "user", text)
+            self.input_edit.clear()
+            self.load_messages()

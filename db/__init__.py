@@ -44,3 +44,35 @@ def create_project(conn: sqlite3.Connection, name: str, description: str = "") -
 
 def get_projects(conn: sqlite3.Connection) -> list[sqlite3.Row]:
     return list(conn.execute("SELECT id, name FROM projects"))
+
+
+def add_message(
+    conn: sqlite3.Connection, project_id: int, sender: str, message: str
+) -> None:
+    """Store a chat message for a project."""
+    with conn:
+        conn.execute(
+            "INSERT INTO messages (project_id, sender, message) VALUES (?, ?, ?)",
+            (project_id, sender, message),
+        )
+
+
+def get_messages(conn: sqlite3.Connection, project_id: int) -> list[sqlite3.Row]:
+    """Return chat history for a project ordered by insertion."""
+    return list(
+        conn.execute(
+            "SELECT sender, message, timestamp FROM messages WHERE project_id=? "
+            "ORDER BY id",
+            (project_id,),
+        )
+    )
+
+
+def get_code_files(conn: sqlite3.Connection, project_id: int) -> list[sqlite3.Row]:
+    """Return list of code files belonging to a project."""
+    return list(
+        conn.execute(
+            "SELECT id, path, content FROM code_files WHERE project_id=?",
+            (project_id,),
+        )
+    )
