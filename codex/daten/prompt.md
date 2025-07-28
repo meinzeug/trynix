@@ -51,4 +51,4 @@ Deine Aufgabe ist es jetzt, mit der **technischen Umsetzung der geplanten Funkti
 
 ---
 
-[Codex aktiviert – fahre fort mit Milestone 12 (Live-Projekt-Workspace & ZIP-Export)]
+[Codex aktiviert – fahre fort mit Milestone 13 (Dynamische Roadmap & Queen-Dialog)]

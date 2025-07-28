@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from db import add_message, get_tasks, create_task, update_task_status
 from typing import Dict
+from pathlib import Path
 
 from .agents import (
     BaseAgent,
@@ -29,7 +30,7 @@ class AIController:
         self._pause = threading.Event()
         self.running = False
 
-    def run_project(self, project_id: int, idea: str) -> None:
+    def run_project(self, project_id: int, idea: str, workspace: Path) -> None:
         """Plan tasks with Queen and execute them with a single worker."""
         self.running = True
         add_message(self.conn, project_id, "system", f"Starting project: {idea}")
@@ -42,7 +43,7 @@ class AIController:
             code = None
             if self.worker:
                 code = self.worker.execute_task(
-                    task["id"], project_id, task["description"]
+                    task["id"], project_id, task["description"], workspace
                 )
             test_id = create_task(
                 self.conn,
