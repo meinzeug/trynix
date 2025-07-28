@@ -19,6 +19,9 @@ Die Software führt ein ganzes KI-Entwicklungsteam – eine Projektleiterin-KI (
   Zu Beginn erzeugt die Queen aus der Nutzeridee eine vollständige Projekt-Roadmap.  
   Diese kann live eingesehen werden – inkl. aller Zwischenstände.  
   Änderungen können jederzeit im Dialog mit der Queen (Text oder Sprache) besprochen und übernommen werden.
+- 🪄 **Zauberstab – automatische Feature-Innovation**
+  Mit einem Klick analysiert die Queen das bestehende Projekt und schlägt neue kreative Funktionen vor.
+  Diese können direkt in die Roadmap übernommen und anschließend umgesetzt werden.
 - **Code-Browser & Export**: Alle generierten Dateien einsehbar und exportierbar.
 - 📂 **Live-Projekt-Workspace & ZIP-Export**
   Während die KI-Agenten ein neues Programm erzeugen, entstehen die Dateien live in einem sichtbaren Projektordner.

@@ -64,3 +64,12 @@
 - Änderungen durch die Queen aktualisieren sowohl die JSON-Datei als auch die Datenbank.
 - In der GUI erscheint eine eigene Ansicht (z. B. Sidebar mit `QTreeView`), die den aktuellen Stand der Roadmap live anzeigt.
 - Nutzer können per Chat oder Spracheingabe Änderungswünsche einreichen; nach Bestätigung passt die Queen die Roadmap an und speichert sie erneut.
+
+## Zauberstab - automatische Feature-Innovation
+- In der GUI erscheint ein 🪄-Icon mit Tooltip "Lass die Queen neue Features vorschlagen".
+- Beim Klick analysiert die Queen die aktuelle Codebasis im Ordner `workspace/` und liest `milestones.md`.
+- Aus diesen Informationen entwickelt sie 2–5 kreative Funktionsideen mit kurzer Beschreibung und Nutzenargumentation.
+- Die Ideen werden in einem separaten Panel aufgelistet, jeweils mit Button "Zur Roadmap hinzufügen".
+- Akzeptierte Vorschläge schreibt die Queen als neuen Milestone samt Subtasks direkt in `milestones.md` und legt optional Notizen in `brain.md` ab.
+- Der gesamte Ablauf wird im Chat und den Logs dokumentiert und lässt sich später nachvollziehen.
+
