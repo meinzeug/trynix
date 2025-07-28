@@ -46,6 +46,7 @@
 - Plugin-System ermoeglicht Erweiterungen (z.B. neue Agenten oder Funktionen)
 - TTS-Ausgabe fuer Rueckmeldungen der Queen
 - Beispiel-Plugin aktiviert Darkmode in der GUI
+- Beispiel-Plugin fuer einen Echo-Agent demonstriert die Agenten-Schnittstelle
 - `build.py` baut Windows- und Linux-Installer via PyInstaller
 - `lan_share.py` ermoeglicht Projekt-Sharing ueber einen lokalen HTTP-Server
 - Adminpanel und Settings-Fenster sind in der GUI integriert

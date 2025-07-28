@@ -55,7 +55,7 @@
 
 ## Milestone 11: Agenten-Plugin-System
 - [x] Plugin-Schnittstelle erweitern, um neue Agenten einzubinden
-- [ ] Beispielplugin fuer einen Custom-Agent bereitstellen
+- [x] Beispielplugin fuer einen Custom-Agent bereitstellen
 
 ## Milestone 12: Live-Projekt-Workspace & ZIP-Export
 - [ ] Zentrales Verzeichnis `workspace/` anlegen

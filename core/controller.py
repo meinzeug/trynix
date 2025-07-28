@@ -1,7 +1,15 @@
 from __future__ import annotations
 
 from db import add_message, get_tasks, create_task, update_task_status
-from .agents import Queen, HiveWorker, TestWorker
+from typing import Dict
+
+from .agents import (
+    BaseAgent,
+    AGENT_REGISTRY,
+    Queen,
+    HiveWorker,
+    TestWorker,
+)
 from services import run_flow
 import threading
 import time
@@ -12,9 +20,12 @@ class AIController:
 
     def __init__(self, conn) -> None:
         self.conn = conn
-        self.queen = Queen(conn, "queen")
-        self.worker = HiveWorker(conn, "hive")
-        self.tester = TestWorker(conn, "tester")
+        self.agents: Dict[str, BaseAgent] = {
+            name: cls(conn, name) for name, cls in AGENT_REGISTRY.items()
+        }
+        self.queen = self.agents.get("queen")
+        self.worker = self.agents.get("hive")
+        self.tester = self.agents.get("tester")
         self._pause = threading.Event()
         self.running = False
 
@@ -22,12 +33,17 @@ class AIController:
         """Plan tasks with Queen and execute them with a single worker."""
         self.running = True
         add_message(self.conn, project_id, "system", f"Starting project: {idea}")
-        self.queen.plan_project(project_id, idea)
+        if self.queen:
+            self.queen.plan_project(project_id, idea)
         for task in get_tasks(self.conn, project_id):
             while self._pause.is_set():
                 time.sleep(0.1)
             update_task_status(self.conn, task["id"], "running")
-            code = self.worker.execute_task(task["id"], project_id, task["description"])
+            code = None
+            if self.worker:
+                code = self.worker.execute_task(
+                    task["id"], project_id, task["description"]
+                )
             test_id = create_task(
                 self.conn,
                 project_id,
@@ -35,7 +51,9 @@ class AIController:
                 f"Tests for task {task['id']}",
                 status="running",
             )
-            status = self.tester.run_tests(project_id, task["id"], code)
+            status = "skipped"
+            if self.tester and code is not None:
+                status = self.tester.run_tests(project_id, task["id"], code)
             update_task_status(self.conn, test_id, status)
 
         # run additional orchestration via Claude-Flow CLI
