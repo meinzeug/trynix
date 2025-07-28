@@ -50,8 +50,8 @@
 - [x] Option zum Speichern einzelner Dateien
 
 ## Milestone 10: Automatische Queen-TTS
-- [ ] Queen-Nachrichten automatisch ueber TTS ausgeben
-- [ ] Schalter in den Einstellungen zum Aktivieren/Deaktivieren
+- [x] Queen-Nachrichten automatisch ueber TTS ausgeben
+- [x] Schalter in den Einstellungen zum Aktivieren/Deaktivieren
 
 ## Milestone 11: Agenten-Plugin-System
 - [x] Plugin-Schnittstelle erweitern, um neue Agenten einzubinden

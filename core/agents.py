@@ -11,6 +11,9 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from speech import speak
+from core.config import CONFIG
+
 
 class BaseAgent:
     def __init__(self, conn, name: str) -> None:
@@ -26,6 +29,8 @@ class Queen(BaseAgent):
             f"Create a numbered task list for the following project idea:\n{idea}\nReturn one task per line."
         )
         add_message(self.conn, project_id, self.name, response)
+        if CONFIG.tts_enabled:
+            speak(response)
         for line in response.splitlines():
             line = line.strip()
             if line:

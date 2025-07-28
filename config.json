@@ -1,0 +1,5 @@
+{
+  "db_path": ".trynix/trynix.db",
+  "log_dir": ".trynix/logs",
+  "tts_enabled": true
+}
