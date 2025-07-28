@@ -4,6 +4,7 @@ from PySide6 import QtWidgets
 
 from db import add_message, get_messages
 
+from speech import transcribe_from_microphone
 
 class ChatWindow(QtWidgets.QWidget):
     def __init__(self, conn, project_id: int) -> None:
@@ -15,9 +16,11 @@ class ChatWindow(QtWidgets.QWidget):
         self.messages_view = QtWidgets.QTextEdit(readOnly=True)
         self.input_edit = QtWidgets.QLineEdit()
         self.send_btn = QtWidgets.QPushButton("Send")
+        self.mic_btn = QtWidgets.QPushButton("🎤")
 
         input_layout = QtWidgets.QHBoxLayout()
         input_layout.addWidget(self.input_edit)
+        input_layout.addWidget(self.mic_btn)
         input_layout.addWidget(self.send_btn)
 
         layout = QtWidgets.QVBoxLayout(self)
@@ -25,6 +28,7 @@ class ChatWindow(QtWidgets.QWidget):
         layout.addLayout(input_layout)
 
         self.send_btn.clicked.connect(self.send_message)
+        self.mic_btn.clicked.connect(self.fill_from_speech)
         self.load_messages()
 
     def load_messages(self) -> None:
@@ -38,3 +42,12 @@ class ChatWindow(QtWidgets.QWidget):
             add_message(self.conn, self.project_id, "user", text)
             self.input_edit.clear()
             self.load_messages()
+    def fill_from_speech(self) -> None:
+        try:
+            text = transcribe_from_microphone()
+            if text:
+                self.input_edit.setText(text)
+        except Exception as exc:
+            QtWidgets.QMessageBox.warning(self, "STT Error", str(exc))
+
+

@@ -7,6 +7,7 @@
 - **Node.js** >= 18 fuer die Nutzung der Claude-Flow CLI
 - **Claude-Flow v2.0.0 Alpha** zur Orchestrierung der KI-Agenten
 - **OpenRouter API** mit Modell `qwen/qwen3-coder:free`
+- **speech_recognition** fuer Mikrofon-STT
 - **PyInstaller** fuer das Packaging
 
 ## Moduluebersicht
