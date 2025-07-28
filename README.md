@@ -15,6 +15,10 @@ Die Software führt ein ganzes KI-Entwicklungsteam – eine Projektleiterin-KI (
 - **Modell: `qwen/qwen3-coder:free`** über OpenRouter – kostenlos & extrem leistungsfähig.
 - **Claude-Flow Orchestrierung**: Nutzung der Hive-/Swarm-Architektur für verteilte Agentenarbeit.
 - **Sprachsteuerung (optional)**: Eingabe auch per Mikrofon mit STT.
+- 🧭 **Dynamische Roadmap mit Queen-Dialog**  
+  Zu Beginn erzeugt die Queen aus der Nutzeridee eine vollständige Projekt-Roadmap.  
+  Diese kann live eingesehen werden – inkl. aller Zwischenstände.  
+  Änderungen können jederzeit im Dialog mit der Queen (Text oder Sprache) besprochen und übernommen werden.
 - **Code-Browser & Export**: Alle generierten Dateien einsehbar und exportierbar.
 - 📂 **Live-Projekt-Workspace & ZIP-Export**
   Während die KI-Agenten ein neues Programm erzeugen, entstehen die Dateien live in einem sichtbaren Projektordner.
