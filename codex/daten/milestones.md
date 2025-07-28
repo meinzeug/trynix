@@ -123,3 +123,11 @@
 - [ ] Controller erlaubt dynamische Auswahl aller registrierten Agenten
 - [ ] Dokumentation aktualisieren und Beispiele ergänzen
 
+
+## Milestone 20: Zentrale Kontext-Engine
+- [ ] Kontextdatenstruktur `context_state.json` anlegen und laden
+- [ ] Felder: `history`, `agents`, `task_flow`, `handoffs`, `user_actions`
+- [ ] Live-Aktualisierung und optionale Speicherung in der DB
+- [ ] Kontext-API zum Lesen und Schreiben aller Bereiche
+- [ ] UI-Komponente zur Anzeige des aktuellen Gesamtzustands
+- [ ] Tests und Dokumentation der Funktion
