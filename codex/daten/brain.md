@@ -44,3 +44,6 @@
 - Konzeptabgleich 2025-08-19: README fordert bcrypt-Hashing. Muss noch umgesetzt werden (Milestone 16).
 - Milestone 15 umgesetzt: Projekte lassen sich nun durch Admins löschen und das Settings-Fenster ist nur noch für Admins sichtbar.
 - Milestone 16 abgeschlossen: Passwort-Hashing verwendet bcrypt; Altdaten werden beim ersten Login migriert und neue Tests pruefen Admin-Berechtigungen.
+- Milestone 17 umgesetzt: Neuer Dialog zum Anlegen von Agenten, YAML-Speicherung
+  und Plugin zum Laden der definierten Agenten. Tests decken Speicherung und
+  Registrierung ab.
