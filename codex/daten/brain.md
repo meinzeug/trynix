@@ -38,3 +38,4 @@
 - Milestone 11 gestartet und abgeschlossen: Beispiel-Plugin `custom_agent` registriert einen Echo-Agenten über die Plugin-Schnittstelle.
 - Milestone 12 umgesetzt: Workspace-Verzeichnis pro Projektlauf mit Live-Dateibaum und ZIP-Export implementiert.
 - Milestone 13 umgesetzt: Queen erstellt Roadmap, GUI zeigt Fortschritt und Chat kann Änderungen übernehmen.
+- Milestone 14 begonnen: Zauberstab-Funktion implementiert, Feature Wizard erstellt.

@@ -75,7 +75,7 @@
 - In der GUI erscheint ein 🪄-Icon mit Tooltip "Lass die Queen neue Features vorschlagen".
 - Beim Klick analysiert die Queen die aktuelle Codebasis im Ordner `workspace/` und liest `milestones.md`.
 - Aus diesen Informationen entwickelt sie 2–5 kreative Funktionsideen mit kurzer Beschreibung und Nutzenargumentation.
-- Die Ideen werden in einem separaten Panel aufgelistet, jeweils mit Button "Zur Roadmap hinzufügen".
-- Akzeptierte Vorschläge schreibt die Queen als neuen Milestone samt Subtasks direkt in `milestones.md` und legt optional Notizen in `brain.md` ab.
+- Die Ideen erscheinen im "Feature Wizard"-Fenster und können einzeln über den Button "Zur Roadmap hinzufügen" übernommen werden.
+- Akzeptierte Vorschläge werden als neuer Milestone samt Subtasks an `milestones.md` angehängt und optional als Notiz in `brain.md` vermerkt.
 - Der gesamte Ablauf wird im Chat und den Logs dokumentiert und lässt sich später nachvollziehen.
 

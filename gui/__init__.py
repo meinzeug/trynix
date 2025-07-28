@@ -8,6 +8,7 @@ from .admin import AdminWindow
 from .settings import SettingsWindow
 from .taskmanager import TaskManagerWindow
 from .roadmap import RoadmapWindow
+from .wand import WandWindow
 
 __all__ = [
     "LoginWindow",
@@ -20,4 +21,5 @@ __all__ = [
     "SettingsWindow",
     "TaskManagerWindow",
     "RoadmapWindow",
+    "WandWindow",
 ]
