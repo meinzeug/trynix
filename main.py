@@ -18,7 +18,7 @@ def main() -> None:
     app = QtWidgets.QApplication([])
     login = LoginWindow(conn)
     if login.exec() == QtWidgets.QDialog.Accepted and login.username:
-        window = Dashboard(conn, login.username)
+        window = Dashboard(conn, login.user_id, login.username, login.role or "user")
         window.show()
         app.exec()
     conn.close()

@@ -10,10 +10,12 @@ from .status import StatusWindow
 
 
 class Dashboard(QtWidgets.QMainWindow):
-    def __init__(self, conn, username: str) -> None:
+    def __init__(self, conn, user_id: int, username: str, role: str) -> None:
         super().__init__()
         self.conn = conn
         self.username = username
+        self.user_id = user_id
+        self.role = role
         self.setWindowTitle(f"trynix - {username}")
 
         self.project_list = QtWidgets.QListWidget()
@@ -42,7 +44,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.load_projects()
 
     def load_projects(self) -> None:
-        self.projects = get_projects(self.conn)
+        self.projects = get_projects(self.conn, self.user_id, self.role)
         self.project_list.clear()
         for row in self.projects:
             self.project_list.addItem(row["name"])
@@ -50,7 +52,7 @@ class Dashboard(QtWidgets.QMainWindow):
     def create_project(self) -> None:
         name, ok = QtWidgets.QInputDialog.getText(self, "New Project", "Project name:")
         if ok and name:
-            create_project(self.conn, name)
+            create_project(self.conn, self.user_id, name)
             self.load_projects()
 
     def selected_project_id(self) -> int | None:
