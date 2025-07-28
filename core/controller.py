@@ -13,9 +13,6 @@ from pathlib import Path
 from .agents import (
     BaseAgent,
     AGENT_REGISTRY,
-    Queen,
-    HiveWorker,
-    TestWorker,
 )
 from services import run_flow
 from .roadmap import load_roadmap, save_roadmap, mark_task_done
@@ -75,7 +72,9 @@ class AIController:
 
         # run additional orchestration via Claude-Flow CLI
         try:
-            output = run_flow(["npx", "claude-flow@alpha", "hive-mind", "wizard", "--force"])
+            output = run_flow(
+                ["npx", "claude-flow@alpha", "hive-mind", "wizard", "--force"]
+            )
             add_message(self.conn, project_id, "claude-flow", output)
         except Exception as exc:  # subprocess.CalledProcessError etc.
             add_message(self.conn, project_id, "error", str(exc))
