@@ -23,3 +23,4 @@
 - Beispiel-Darkmode-Plugin erstellt und per Loader eingebunden.
 - TTS-Unterstuetzung fuer Chatnachrichten implementiert.
 - Build-Skript fuer PyInstaller hinzugefuegt.
+- LAN-Sharing umgesetzt: neuer Service zum Teilen eines Projekts als ZIP per HTTP und Share-Button im Dashboard.

@@ -4,6 +4,7 @@ from PySide6 import QtWidgets
 
 from db import create_project, get_projects
 from core import AIController
+from services import start_share, stop_share
 from .chat import ChatWindow
 from .codeviewer import CodeViewer
 from .status import StatusWindow
@@ -24,6 +25,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.code_btn = QtWidgets.QPushButton("View Code")
         self.status_btn = QtWidgets.QPushButton("View Status")
         self.run_btn = QtWidgets.QPushButton("Run AI")
+        self.share_btn = QtWidgets.QPushButton("Share Project")
 
         central = QtWidgets.QWidget()
         layout = QtWidgets.QVBoxLayout(central)
@@ -31,6 +33,7 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.project_list)
         layout.addWidget(self.new_btn)
         layout.addWidget(self.run_btn)
+        layout.addWidget(self.share_btn)
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
         layout.addWidget(self.status_btn)
@@ -38,10 +41,12 @@ class Dashboard(QtWidgets.QMainWindow):
 
         self.new_btn.clicked.connect(self.create_project)
         self.run_btn.clicked.connect(self.start_ai)
+        self.share_btn.clicked.connect(self.share_project)
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
         self.status_btn.clicked.connect(self.view_status)
         self.load_projects()
+        self._share_server = None
 
     def load_projects(self) -> None:
         self.projects = get_projects(self.conn, self.user_id, self.role)
@@ -88,3 +93,20 @@ class Dashboard(QtWidgets.QMainWindow):
             controller = AIController(self.conn)
             controller.run_project(project_id, idea)
             QtWidgets.QMessageBox.information(self, "AI", "Project completed")
+
+    def share_project(self) -> None:
+        project_id = self.selected_project_id()
+        if project_id is None:
+            return
+        if self._share_server is not None:
+            QtWidgets.QMessageBox.information(self, "Share", "Project is already being shared")
+            return
+        server, thread, tmpdir, url = start_share(self.conn, project_id)
+        self._share_server = (server, thread, tmpdir)
+        QtWidgets.QMessageBox.information(self, "Share", f"Project available at {url}\nServer stops when application closes")
+
+    def closeEvent(self, event) -> None:
+        if self._share_server is not None:
+            stop_share(*self._share_server)
+            self._share_server = None
+        super().closeEvent(event)
