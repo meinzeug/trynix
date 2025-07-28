@@ -25,3 +25,5 @@
 - Build-Skript fuer PyInstaller hinzugefuegt.
 - LAN-Sharing umgesetzt: neuer Service zum Teilen eines Projekts als ZIP per HTTP und Share-Button im Dashboard.
 - Adminpanel und Settings-Fenster fuer API-Key implementiert.
+
+- Milestone-Updater-Plugin erstellt: aktualisiert milestones.md beim Start.

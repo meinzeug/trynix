@@ -7,7 +7,7 @@ Stelle sicher, dass in `codex/daten/milestones.md` jeder Milestone sowie alle se
 
 Aktueller Stand:
 - Arbeitsverzeichnis: `codex/daten/`
-- Aktueller Milestone: Milestone 1 aus `milestones.md`
+- Aktueller Milestone: Milestone 7 aus `milestones.md`
 - Letzte Aenderung: siehe obersten Eintrag in `changelog.md`
 
 Diese Datei ersetzt externe Prompts und dient als zentrale Eingabebasis fuer den naechsten Lauf.
