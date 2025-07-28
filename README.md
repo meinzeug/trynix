@@ -120,6 +120,7 @@ Die Datenbank wird bei Erststart automatisch erzeugt.
 - **Task-Panel mit Agentenzuordnung**
 - **Code-Viewer mit Syntaxhighlighting**
 - **Mikrofonbutton für Spracheingabe**
+- **API-Key Einstellungen in der GUI**
 - **Adminpanel zur Benutzerverwaltung**
 
 ---

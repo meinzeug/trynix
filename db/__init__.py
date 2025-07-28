@@ -41,6 +41,17 @@ def authenticate_user(conn: sqlite3.Connection, username: str, password: str) ->
     return None, None
 
 
+def get_users(conn: sqlite3.Connection) -> list[sqlite3.Row]:
+    """Return all users sorted by ID."""
+    return list(conn.execute("SELECT id, username, role FROM users ORDER BY id"))
+
+
+def delete_user(conn: sqlite3.Connection, user_id: int) -> None:
+    """Delete the given user."""
+    with conn:
+        conn.execute("DELETE FROM users WHERE id=?", (user_id,))
+
+
 def create_project(
     conn: sqlite3.Connection,
     owner_id: int | None,
