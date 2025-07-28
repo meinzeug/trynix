@@ -10,3 +10,5 @@
 - 2025-07-31: AIController implementiert und ins Dashboard integriert.
 - 2025-08-01: Claude-Flow-Integration im AIController, Dokumentation aktualisiert.
 - 2025-08-01: STT-Modul und Mikrofon-Button im Chatfenster integriert.
+
+- 2025-08-02: Automatisches Abhaken der Milestones implementiert.
