@@ -3,8 +3,8 @@ Du bist Codex, KI-Coding-Instanz für das Projekt "trynix".
 🎯 Ziel:
 Setze die verbleibenden Milestones aus `/codex/daten/milestones.md` um – basierend auf dem Konzept aus `/README.md`.
 
-Aktueller Fokus: Milestone 15
-Letzte Analyse: Alle Funktionen bis Milestone 14 vorhanden. Admin-Rechte für Projekte und Settings fehlen.
+Aktueller Fokus: Milestone 15 und Milestone 16
+Letzte Analyse: Admin-Rechte für Projekte fehlen noch; zudem soll Passwort-Hashing auf bcrypt umgestellt werden.
 Arbeitsverzeichnis: `/`
 Steuerverzeichnis: `/codex/daten/`
 

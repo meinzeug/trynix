@@ -40,3 +40,5 @@
 - Milestone 13 umgesetzt: Queen erstellt Roadmap, GUI zeigt Fortschritt und Chat kann Änderungen übernehmen.
 - Milestone 14 begonnen: Zauberstab-Funktion implementiert, Feature Wizard erstellt.
 - Konzeptabgleich 2025-08-18: README verlangt Admin-Rechte fuer Projektloeschung und Konfiguration. Funktion fehlt. Milestone 15 angelegt.
+
+- Konzeptabgleich 2025-08-19: README fordert bcrypt-Hashing. Muss noch umgesetzt werden (Milestone 16).
