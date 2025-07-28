@@ -13,6 +13,9 @@ from pathlib import Path
 from .agents import (
     BaseAgent,
     AGENT_REGISTRY,
+    AGENT_ACTIVE,
+    activate_agent,
+    deactivate_agent,
 )
 from services import run_flow
 from .roadmap import load_roadmap, save_roadmap, mark_task_done
@@ -25,14 +28,33 @@ class AIController:
 
     def __init__(self, conn) -> None:
         self.conn = conn
-        self.agents: Dict[str, BaseAgent] = {
-            name: cls(conn, name) for name, cls in AGENT_REGISTRY.items()
+        self._pause = threading.Event()
+        self.running = False
+        self.refresh_agents()
+
+    def refresh_agents(self) -> None:
+        """Reload active agents from the registry."""
+
+        self.agents = {
+            name: cls(self.conn, name)
+            for name, cls in AGENT_REGISTRY.items()
+            if AGENT_ACTIVE.get(name, True)
         }
         self.queen = self.agents.get("queen")
         self.worker = self.agents.get("hive")
         self.tester = self.agents.get("tester")
-        self._pause = threading.Event()
-        self.running = False
+
+    def activate_agent(self, name: str) -> None:
+        """Activate an agent and refresh the list."""
+
+        activate_agent(name)
+        self.refresh_agents()
+
+    def deactivate_agent(self, name: str) -> None:
+        """Deactivate an agent and refresh the list."""
+
+        deactivate_agent(name)
+        self.refresh_agents()
 
     def run_project(self, project_id: int, idea: str, workspace: Path) -> None:
         """Plan tasks with Queen and execute them with a single worker."""

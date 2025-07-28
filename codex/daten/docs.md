@@ -88,6 +88,8 @@ Neue Agenten werden als Python-Klassen definiert, die `BaseAgent` erweitern. Ein
 
 Tools sind ebenfalls per YAML konfigurierbar. Jede Definition enthält `name`, `description`, `command` und optionale Eingabeparameter. Die Agentenkonfiguration legt fest, welche Tools ein Agent verwenden darf. Beim Laden registriert das Plugin die Tools und ordnet sie den Agenten zu.
 
+Die Queen lädt alle über Plugins registrierten Agenten automatisch und stellt sie dem Controller bereit. Über das Dashboard lassen sich Agenten bei Bedarf deaktivieren.
+
 
 ## Zentrale Kontext-Engine
 Die Anwendung verwaltet alle relevanten Zustände in einer globalen Kontextstruktur (`context_state.json`). Diese besteht aus:

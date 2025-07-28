@@ -101,14 +101,34 @@ class TestWorker(BaseAgent):
         return status
 
 
-# global registry for agent classes
+# global registry for agent classes and their active state
 AGENT_REGISTRY: Dict[str, Type[BaseAgent]] = {}
+AGENT_ACTIVE: Dict[str, bool] = {}
 
 
 def register_agent(name: str, cls: Type[BaseAgent]) -> None:
     """Register an agent class to be available for the controller."""
 
     AGENT_REGISTRY[name] = cls
+    AGENT_ACTIVE.setdefault(name, True)
+
+
+def activate_agent(name: str) -> None:
+    """Enable an agent globally."""
+
+    AGENT_ACTIVE[name] = True
+
+
+def deactivate_agent(name: str) -> None:
+    """Disable an agent globally."""
+
+    AGENT_ACTIVE[name] = False
+
+
+def is_agent_active(name: str) -> bool:
+    """Return True if the agent is active."""
+
+    return AGENT_ACTIVE.get(name, False)
 
 
 # register built-in agents
