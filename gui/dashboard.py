@@ -3,15 +3,19 @@ from __future__ import annotations
 from PySide6 import QtWidgets, QtCore
 import threading
 
-from db import create_project, get_projects
+from db import create_project, get_projects, get_project, set_project_workspace
 from core import AIController
 from .taskmanager import TaskManagerWindow
 from services import start_share, stop_share
 from .chat import ChatWindow
 from .codeviewer import CodeViewer
+from .workspace import WorkspaceViewer
 from .status import StatusWindow
 from .admin import AdminWindow
 from .settings import SettingsWindow
+from core.config import CONFIG
+from pathlib import Path
+import datetime
 
 
 class Dashboard(QtWidgets.QMainWindow):
@@ -27,6 +31,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.new_btn = QtWidgets.QPushButton("New Project")
         self.chat_btn = QtWidgets.QPushButton("Open Chat")
         self.code_btn = QtWidgets.QPushButton("View Code")
+        self.workspace_btn = QtWidgets.QPushButton("Workspace")
         self.status_btn = QtWidgets.QPushButton("View Status")
         self.tasks_btn = QtWidgets.QPushButton("Manage Tasks")
         self.run_btn = QtWidgets.QPushButton("Run AI")
@@ -48,6 +53,7 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.share_btn)
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
+        layout.addWidget(self.workspace_btn)
         layout.addWidget(self.tasks_btn)
         layout.addWidget(self.status_btn)
         layout.addWidget(self.status_label)
@@ -64,6 +70,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.share_btn.clicked.connect(self.share_project)
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
+        self.workspace_btn.clicked.connect(self.open_workspace)
         self.status_btn.clicked.connect(self.view_status)
         self.settings_btn.clicked.connect(self.open_settings)
         self.admin_btn.clicked.connect(self.open_admin)
@@ -105,6 +112,18 @@ class Dashboard(QtWidgets.QMainWindow):
             win = CodeViewer(self.conn, project_id)
             win.show()
 
+    def open_workspace(self) -> None:
+        project_id = self.selected_project_id()
+        if project_id is not None:
+            row = get_project(self.conn, project_id)
+            if row and row["workspace"]:
+                win = WorkspaceViewer(Path(row["workspace"]))
+                win.show()
+            else:
+                QtWidgets.QMessageBox.information(
+                    self, "Workspace", "No workspace available for this project"
+                )
+
     def view_status(self) -> None:
         project_id = self.selected_project_id()
         if project_id is not None:
@@ -121,9 +140,18 @@ class Dashboard(QtWidgets.QMainWindow):
                 QtWidgets.QMessageBox.information(self, "AI", "AI already running")
                 return
             self.controller = AIController(self.conn)
+            # create workspace directory
+            row = get_project(self.conn, project_id)
+            name = row["name"] if row else str(project_id)
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            ws_root = CONFIG.workspace_dir
+            ws_root.mkdir(exist_ok=True)
+            workspace = ws_root / f"{name}-{timestamp}"
+            workspace.mkdir(parents=True, exist_ok=True)
+            set_project_workspace(self.conn, project_id, str(workspace))
             self._thread = threading.Thread(
                 target=self.controller.run_project,
-                args=(project_id, idea),
+                args=(project_id, idea, workspace),
                 daemon=True,
             )
             self._thread.start()

@@ -6,6 +6,7 @@ import json
 class Config:
     db_path: Path = Path('.trynix/trynix.db')
     log_dir: Path = Path('.trynix/logs')
+    workspace_dir: Path = Path('workspace')
     tts_enabled: bool = True
 
     @classmethod
@@ -16,6 +17,7 @@ class Config:
             return cls(
                 db_path=Path(data.get('db_path', cls.db_path)),
                 log_dir=Path(data.get('log_dir', cls.log_dir)),
+                workspace_dir=Path(data.get('workspace_dir', cls.workspace_dir)),
                 tts_enabled=data.get('tts_enabled', cls.tts_enabled),
             )
         return cls()
@@ -27,6 +29,7 @@ class Config:
                 {
                     'db_path': str(self.db_path),
                     'log_dir': str(self.log_dir),
+                    'workspace_dir': str(self.workspace_dir),
                     'tts_enabled': self.tts_enabled,
                 },
                 indent=2,

@@ -41,12 +41,16 @@ class Queen(BaseAgent):
 class HiveWorker(BaseAgent):
     """Basic code generation worker."""
 
-    def execute_task(self, task_id: int, project_id: int, description: str) -> str:
+    def execute_task(
+        self, task_id: int, project_id: int, description: str, workspace: Path
+    ) -> str:
         """Generate code for a task and return the code."""
         code = send_prompt(description)
         add_message(self.conn, project_id, self.name, code)
-        file_path = f"task_{task_id}.py"
-        add_code_file(self.conn, project_id, file_path, code)
+        rel_path = f"task_{task_id}.py"
+        file_path = workspace / rel_path
+        file_path.write_text(code, encoding="utf-8")
+        add_code_file(self.conn, project_id, rel_path, code)
         update_task_status(self.conn, task_id, "done")
         return code
 
