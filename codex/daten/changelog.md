@@ -21,3 +21,4 @@
   PyInstaller-Build-Skript hinzugefuegt.
 - 2025-08-07: LAN-Sharing implementiert: neuer Service `lan_share.py`, Share-Button im Dashboard, Dokumentation aktualisiert.
 - 2025-08-08: Adminpanel und Settings-Fenster hinzugefuegt; Dokumentation ergaenzt.
+- 2025-08-09: Konzeptpruefung abgeschlossen. Fehlende Funktionen ermittelt und Milestones 8-11 angelegt (Live-Steuerung, Code-Highlighting, Queen-TTS, Agenten-Plugins).

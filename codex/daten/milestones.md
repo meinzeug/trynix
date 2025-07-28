@@ -38,3 +38,21 @@
 - [x] Plugin-Schnittstelle vorbereiten
 - [x] Optionale Features (TTS, LAN-Sharing, Themes)
 
+
+## Milestone 8: Erweiterte Live-Steuerung
+- [ ] KI-Ausfuehrung im Dashboard pausieren und fortsetzen koennen
+- [ ] Tasks manuell bearbeiten oder neue hinzufuegen
+- [ ] UI-Statusanzeige fuer laufende/pausierte Prozesse
+- [ ] AIController um Pausen-Logik erweitern
+
+## Milestone 9: Verbesserter Code-Viewer
+- [ ] Syntaxhighlighting fuer Python-Code implementieren
+- [ ] Option zum Speichern einzelner Dateien
+
+## Milestone 10: Automatische Queen-TTS
+- [ ] Queen-Nachrichten automatisch ueber TTS ausgeben
+- [ ] Schalter in den Einstellungen zum Aktivieren/Deaktivieren
+
+## Milestone 11: Agenten-Plugin-System
+- [ ] Plugin-Schnittstelle erweitern, um neue Agenten einzubinden
+- [ ] Beispielplugin fuer einen Custom-Agent bereitstellen
