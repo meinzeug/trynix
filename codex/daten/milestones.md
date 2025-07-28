@@ -46,8 +46,8 @@
 - [x] AIController um Pausen-Logik erweitern
 
 ## Milestone 9: Verbesserter Code-Viewer
-- [ ] Syntaxhighlighting fuer Python-Code implementieren
-- [ ] Option zum Speichern einzelner Dateien
+- [x] Syntaxhighlighting fuer Python-Code implementieren
+- [x] Option zum Speichern einzelner Dateien
 
 ## Milestone 10: Automatische Queen-TTS
 - [ ] Queen-Nachrichten automatisch ueber TTS ausgeben
