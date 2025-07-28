@@ -47,3 +47,4 @@
   dynamisch, Dashboard erlaubt Aktivieren und Deaktivieren. Dokumentation
   aktualisiert.
 - 2025-08-26: Milestone 20 umgesetzt: zentrale Kontext-Engine mit JSON-Datei, optionaler DB-Speicherung und GUI-Viewer implementiert.
+- 2025-08-28: Beim Laden von YAML-Agenten wird nun geprüft, ob alle zugewiesenen Tools existieren.
