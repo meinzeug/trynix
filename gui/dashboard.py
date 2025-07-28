@@ -8,6 +8,8 @@ from services import start_share, stop_share
 from .chat import ChatWindow
 from .codeviewer import CodeViewer
 from .status import StatusWindow
+from .admin import AdminWindow
+from .settings import SettingsWindow
 
 
 class Dashboard(QtWidgets.QMainWindow):
@@ -26,6 +28,8 @@ class Dashboard(QtWidgets.QMainWindow):
         self.status_btn = QtWidgets.QPushButton("View Status")
         self.run_btn = QtWidgets.QPushButton("Run AI")
         self.share_btn = QtWidgets.QPushButton("Share Project")
+        self.settings_btn = QtWidgets.QPushButton("Settings")
+        self.admin_btn = QtWidgets.QPushButton("Admin Panel")
 
         central = QtWidgets.QWidget()
         layout = QtWidgets.QVBoxLayout(central)
@@ -37,6 +41,9 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
         layout.addWidget(self.status_btn)
+        layout.addWidget(self.settings_btn)
+        if role == "admin":
+            layout.addWidget(self.admin_btn)
         self.setCentralWidget(central)
 
         self.new_btn.clicked.connect(self.create_project)
@@ -45,6 +52,8 @@ class Dashboard(QtWidgets.QMainWindow):
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
         self.status_btn.clicked.connect(self.view_status)
+        self.settings_btn.clicked.connect(self.open_settings)
+        self.admin_btn.clicked.connect(self.open_admin)
         self.load_projects()
         self._share_server = None
 
@@ -104,6 +113,14 @@ class Dashboard(QtWidgets.QMainWindow):
         server, thread, tmpdir, url = start_share(self.conn, project_id)
         self._share_server = (server, thread, tmpdir)
         QtWidgets.QMessageBox.information(self, "Share", f"Project available at {url}\nServer stops when application closes")
+
+    def open_settings(self) -> None:
+        win = SettingsWindow()
+        win.exec()
+
+    def open_admin(self) -> None:
+        win = AdminWindow(self.conn)
+        win.show()
 
     def closeEvent(self, event) -> None:
         if self._share_server is not None:

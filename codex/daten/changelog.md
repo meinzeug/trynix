@@ -20,3 +20,4 @@
 - 2025-08-06: Milestone 7 gestartet: Plugin-System, Darkmode-Plugin, TTS und
   PyInstaller-Build-Skript hinzugefuegt.
 - 2025-08-07: LAN-Sharing implementiert: neuer Service `lan_share.py`, Share-Button im Dashboard, Dokumentation aktualisiert.
+- 2025-08-08: Adminpanel und Settings-Fenster hinzugefuegt; Dokumentation ergaenzt.

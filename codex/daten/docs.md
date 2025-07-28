@@ -17,6 +17,8 @@
 - `db/` stellt Funktionen fuer den Zugriff auf die SQLite-Datenbank bereit
 - `services/` kapselt die Anbindung zu OpenRouter und Claude-Flow
 - `speech/` implementiert optionale Spracherkennung fuer Text-zu-Befehl
+- `plugins/` enthaelt Erweiterungen wie den Darkmode
+- `build.py` erstellt Installer
 
 ## API-Endpunkte und Prozesse
 ### OpenRouter
@@ -40,7 +42,10 @@
 ## Besonderheiten
 - Alle Daten bleiben lokal; keine Cloudspeicherung
 - API-Schluessel werden in einer Datei gesichert und niemals in den Code eingebettet
+- Passwoerter werden beim Speichern gehasht
 - Plugin-System ermoeglicht Erweiterungen (z.B. neue Agenten oder Funktionen)
 - TTS-Ausgabe fuer Rueckmeldungen der Queen
 - Beispiel-Plugin aktiviert Darkmode in der GUI
 - `build.py` baut Windows- und Linux-Installer via PyInstaller
+- `lan_share.py` ermoeglicht Projekt-Sharing ueber einen lokalen HTTP-Server
+- Adminpanel und Settings-Fenster sind in der GUI integriert

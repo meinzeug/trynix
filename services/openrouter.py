@@ -12,6 +12,11 @@ def load_api_key(path: Path = Path('.openrouter_key')) -> str:
     return Path(path).read_text().strip()
 
 
+def save_api_key(key: str, path: Path = Path('.openrouter_key')) -> None:
+    """Save the OpenRouter API key to the given path."""
+    Path(path).write_text(key.strip())
+
+
 def send_prompt(prompt: str, *, model: str = DEFAULT_MODEL, key_path: Path | str = '.openrouter_key') -> str:
     """Send a prompt to the OpenRouter API and return the text response."""
     api_key = load_api_key(Path(key_path))
