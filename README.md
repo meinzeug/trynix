@@ -16,6 +16,9 @@ Die Software führt ein ganzes KI-Entwicklungsteam – eine Projektleiterin-KI (
 - **Claude-Flow Orchestrierung**: Nutzung der Hive-/Swarm-Architektur für verteilte Agentenarbeit.
 - **Sprachsteuerung (optional)**: Eingabe auch per Mikrofon mit STT.
 - **Code-Browser & Export**: Alle generierten Dateien einsehbar und exportierbar.
+- 📂 **Live-Projekt-Workspace & ZIP-Export**
+  Während die KI-Agenten ein neues Programm erzeugen, entstehen die Dateien live in einem sichtbaren Projektordner.
+  Sobald das Projekt abgeschlossen ist, kann es direkt aus der App als ZIP-Datei exportiert werden.
 - **Plattformübergreifend**: Läuft auf Windows & Linux als PySide6 Desktop-App.
 
 ---
