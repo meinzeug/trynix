@@ -75,3 +75,25 @@ def test_dashboard_permissions(monkeypatch, tmp_path):
     assert warnings
     row = conn.execute("SELECT id FROM projects WHERE id=?", (pid,)).fetchone()
     assert row is not None
+
+
+def test_settings_permission(monkeypatch, tmp_path):
+    import pytest
+    try:
+        from PySide6 import QtWidgets
+    except Exception as exc:
+        pytest.skip(str(exc))
+    from gui.dashboard import Dashboard
+
+    app = QtWidgets.QApplication.instance() or QtWidgets.QApplication([])
+
+    conn = setup_db(tmp_path)
+    create_user(conn, "user", "pwd", role="user")
+
+    dash = Dashboard(conn, user_id=1, username="user", role="user")
+
+    warnings = []
+    monkeypatch.setattr(QtWidgets.QMessageBox, "warning", lambda *a, **k: warnings.append(True))
+
+    dash.open_settings()
+    assert warnings
