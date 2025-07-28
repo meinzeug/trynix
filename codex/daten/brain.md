@@ -25,6 +25,7 @@
 - Build-Skript fuer PyInstaller hinzugefuegt.
 - LAN-Sharing umgesetzt: neuer Service zum Teilen eines Projekts als ZIP per HTTP und Share-Button im Dashboard.
 - Adminpanel und Settings-Fenster fuer API-Key implementiert.
+- Milestone-Updater-Plugin erstellt: aktualisiert milestones.md beim Start.
 - Konzeptpruefung: Anforderungen mit README abgeglichen. Folgende Funktionen fehlen:
   - Pausieren/Fortsetzen der KI-Laeufe und manuelle Taskbearbeitung
   - Syntaxhighlighting im Code-Viewer

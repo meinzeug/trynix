@@ -8,5 +8,6 @@ Letzte Analyse: Alle fehlenden Funktionen wurden erfasst und geplant.
 Arbeitsverzeichnis: `/`
 Steuerverzeichnis: `/codex/daten/`
 
+
 Starte mit:
 Codex, fuehre den Prompt in `/codex/daten/prompt.md` aus.
