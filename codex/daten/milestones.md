@@ -79,12 +79,12 @@
   gespeichert.
 
 ## Milestone 14: Zauberstab - automatische Feature-Innovation
-- [ ] Zauberstab-Icon (🪄) in der GUI mit Tooltip "Lass die Queen neue Features vorschlagen"
-- [ ] Klick analysiert Codebasis unter `workspace/` sowie `milestones.md`
-- [ ] Queen entwickelt daraus 2–5 neue Feature-Ideen inkl. Nutzenbeschreibung
-- [ ] Ideen erscheinen in einem Panel mit Button "Zur Roadmap hinzufügen"
-- [ ] Akzeptierte Vorschläge werden als neuer Milestone mit Subtasks in `milestones.md` eingetragen
-- [ ] Optional Notizen zu den Features in `brain.md` speichern
-- [ ] Ergebnis und Aktionen im Chat/Log dokumentieren
-- [ ] Tests und Dokumentation der Funktion anlegen
+- [x] Zauberstab-Icon (🪄) in der GUI mit Tooltip "Lass die Queen neue Features vorschlagen"
+- [x] Klick analysiert Codebasis unter `workspace/` sowie `milestones.md`
+- [x] Queen entwickelt daraus 2–5 neue Feature-Ideen inkl. Nutzenbeschreibung
+- [x] Ideen erscheinen in einem Panel mit Button "Zur Roadmap hinzufügen"
+- [x] Akzeptierte Vorschläge werden als neuer Milestone mit Subtasks in `milestones.md` eingetragen
+- [x] Optional Notizen zu den Features in `brain.md` speichern
+- [x] Ergebnis und Aktionen im Chat/Log dokumentieren
+- [x] Tests und Dokumentation der Funktion anlegen
 

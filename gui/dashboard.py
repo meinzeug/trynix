@@ -14,6 +14,7 @@ from .roadmap import RoadmapWindow
 from .status import StatusWindow
 from .admin import AdminWindow
 from .settings import SettingsWindow
+from .wand import WandWindow
 from core.config import CONFIG
 from pathlib import Path
 import datetime
@@ -40,6 +41,8 @@ class Dashboard(QtWidgets.QMainWindow):
         self.pause_btn = QtWidgets.QPushButton("Pause")
         self.resume_btn = QtWidgets.QPushButton("Resume")
         self.share_btn = QtWidgets.QPushButton("Share Project")
+        self.wand_btn = QtWidgets.QPushButton("🪄")
+        self.wand_btn.setToolTip("Lass die Queen neue Features vorschlagen")
         self.status_label = QtWidgets.QLabel("AI Status: Idle")
         self.settings_btn = QtWidgets.QPushButton("Settings")
         self.admin_btn = QtWidgets.QPushButton("Admin Panel")
@@ -53,6 +56,7 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.pause_btn)
         layout.addWidget(self.resume_btn)
         layout.addWidget(self.share_btn)
+        layout.addWidget(self.wand_btn)
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
         layout.addWidget(self.workspace_btn)
@@ -71,6 +75,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.resume_btn.clicked.connect(self.resume_ai)
         self.tasks_btn.clicked.connect(self.manage_tasks)
         self.share_btn.clicked.connect(self.share_project)
+        self.wand_btn.clicked.connect(self.open_wand)
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
         self.workspace_btn.clicked.connect(self.open_workspace)
@@ -127,6 +132,12 @@ class Dashboard(QtWidgets.QMainWindow):
                 QtWidgets.QMessageBox.information(
                     self, "Workspace", "No workspace available for this project"
                 )
+
+    def open_wand(self) -> None:
+        project_id = self.selected_project_id()
+        if project_id is not None:
+            win = WandWindow(self.conn, project_id)
+            win.show()
 
     def open_roadmap(self) -> None:
         project_id = self.selected_project_id()
