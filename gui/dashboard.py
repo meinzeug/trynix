@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from PySide6 import QtWidgets
+import threading
 
 from db import create_project, get_projects
 from core import AIController
@@ -10,14 +11,16 @@ from .status import StatusWindow
 
 
 class Dashboard(QtWidgets.QMainWindow):
-    def __init__(self, conn, username: str) -> None:
+    def __init__(self, conn, username: str, role: str) -> None:
         super().__init__()
         self.conn = conn
         self.username = username
+        self.role = role
         self.setWindowTitle(f"trynix - {username}")
 
         self.project_list = QtWidgets.QListWidget()
         self.new_btn = QtWidgets.QPushButton("New Project")
+        self.delete_btn = QtWidgets.QPushButton("Delete Project")
         self.chat_btn = QtWidgets.QPushButton("Open Chat")
         self.code_btn = QtWidgets.QPushButton("View Code")
         self.status_btn = QtWidgets.QPushButton("View Status")
@@ -29,6 +32,7 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.project_list)
         layout.addWidget(self.new_btn)
         layout.addWidget(self.run_btn)
+        layout.addWidget(self.delete_btn)
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
         layout.addWidget(self.status_btn)
@@ -36,10 +40,14 @@ class Dashboard(QtWidgets.QMainWindow):
 
         self.new_btn.clicked.connect(self.create_project)
         self.run_btn.clicked.connect(self.start_ai)
+        self.delete_btn.clicked.connect(self.delete_project)
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
         self.status_btn.clicked.connect(self.view_status)
         self.load_projects()
+        self.threads: list[threading.Thread] = []
+        if self.role != "admin":
+            self.delete_btn.setDisabled(True)
 
     def load_projects(self) -> None:
         self.projects = get_projects(self.conn)
@@ -84,5 +92,21 @@ class Dashboard(QtWidgets.QMainWindow):
         idea, ok = QtWidgets.QInputDialog.getText(self, "Project Idea", "Describe project idea:")
         if ok and idea:
             controller = AIController(self.conn)
-            controller.run_project(project_id, idea)
-            QtWidgets.QMessageBox.information(self, "AI", "Project completed")
+            thread = threading.Thread(
+                target=controller.run_project, args=(project_id, idea), daemon=True
+            )
+            thread.start()
+            self.threads.append(thread)
+            QtWidgets.QMessageBox.information(self, "AI", "Project started")
+
+    def delete_project(self) -> None:
+        project_id = self.selected_project_id()
+        if project_id is not None and self.role == "admin":
+            confirm = QtWidgets.QMessageBox.question(
+                self, "Delete", "Delete selected project?"
+            )
+            if confirm == QtWidgets.QMessageBox.Yes:
+                from db import delete_project
+
+                delete_project(self.conn, project_id)
+                self.load_projects()

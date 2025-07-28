@@ -40,4 +40,6 @@
 ## Besonderheiten
 - Alle Daten bleiben lokal; keine Cloudspeicherung
 - API-Schluessel werden in einer Datei gesichert und niemals in den Code eingebettet
+- Mehrere Projekte koennen parallel laufen
+- Nur Admin-Benutzer duerfen Projekte loeschen
 - Geplantes Plugin-System ermoeglicht Erweiterungen (z.B. neue Agenten oder Funktionen)

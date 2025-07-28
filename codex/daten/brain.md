@@ -15,3 +15,4 @@
   und schreibt das Ergebnis ins Chatlog. Milestone 4 "Test-Tasks" damit
   abgeschlossen.
 - Live-Status-Anzeige fuer Agenten im Dashboard umgesetzt.
+- Mehrere Projekte koennen nun parallel laufen; Admins koennen Projekte loeschen.

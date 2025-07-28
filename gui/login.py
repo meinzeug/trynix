@@ -31,10 +31,13 @@ class LoginWindow(QtWidgets.QDialog):
         self.login_btn.clicked.connect(self.handle_login)
         self.register_btn.clicked.connect(self.handle_register)
         self.username: str | None = None
+        self.role: str | None = None
 
     def handle_login(self) -> None:
-        if verify_user(self.conn, self.username_edit.text(), self.password_edit.text()):
+        role = verify_user(self.conn, self.username_edit.text(), self.password_edit.text())
+        if role:
             self.username = self.username_edit.text()
+            self.role = role
             self.accept()
         else:
             QtWidgets.QMessageBox.warning(self, "Error", "Invalid credentials")

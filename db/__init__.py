@@ -24,14 +24,17 @@ def create_user(conn: sqlite3.Connection, username: str, password: str, role: st
         )
 
 
-def verify_user(conn: sqlite3.Connection, username: str, password: str) -> bool:
+def verify_user(conn: sqlite3.Connection, username: str, password: str) -> str | None:
+    """Return the user role if the credentials match, otherwise ``None``."""
     row = conn.execute(
-        "SELECT password_hash FROM users WHERE username=?",
+        "SELECT password_hash, role FROM users WHERE username=?",
         (username,),
     ).fetchone()
     if row is None:
-        return False
-    return row["password_hash"] == hash_password(password)
+        return None
+    if row["password_hash"] == hash_password(password):
+        return row["role"]
+    return None
 
 
 def create_project(conn: sqlite3.Connection, name: str, description: str = "") -> None:
@@ -117,4 +120,13 @@ def update_task_status(conn: sqlite3.Connection, task_id: int, status: str) -> N
             "UPDATE tasks SET status=? WHERE id=?",
             (status, task_id),
         )
+
+
+def delete_project(conn: sqlite3.Connection, project_id: int) -> None:
+    """Remove a project and all related data."""
+    with conn:
+        conn.execute("DELETE FROM projects WHERE id=?", (project_id,))
+        conn.execute("DELETE FROM code_files WHERE project_id=?", (project_id,))
+        conn.execute("DELETE FROM tasks WHERE project_id=?", (project_id,))
+        conn.execute("DELETE FROM messages WHERE project_id=?", (project_id,))
 
