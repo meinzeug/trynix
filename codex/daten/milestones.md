@@ -90,19 +90,19 @@
 
 
 ## Milestone 15: Admin-Rechte fuer Projekte und Konfiguration
-- [ ] Funktion `delete_project` im Modul `db` implementieren
-- [ ] Loeschoption im Dashboard integrieren; Button nur fuer Admin sichtbar
-- [ ] Zugriff auf das Settings-Fenster auf Admins beschraenken
-- [ ] Tests fuer Projektloeschung und Berechtigungen erstellen
-- [ ] Dokumentation und brain.md um neue Admin-Features ergaenzen
+- [x] Funktion `delete_project` im Modul `db` implementieren
+- [x] Loeschoption im Dashboard integrieren; Button nur fuer Admin sichtbar
+- [x] Zugriff auf das Settings-Fenster auf Admins beschraenken
+- [x] Tests fuer Projektloeschung und Berechtigungen erstellen
+- [x] Dokumentation und brain.md um neue Admin-Features ergaenzen
 
 ## Milestone 16: Sichere Passwort-Hashes mit bcrypt
-- [ ] Bibliothek `bcrypt` als Abhängigkeit einbinden
-- [ ] Passwort-Hashing bei Registrierung auf bcrypt umstellen
-- [ ] Existierende Passwörter beim ersten Login migrieren
-- [ ] Authentifizierung mit bcrypt-Hashes prüfen
-- [ ] Tests für Registrierung, Login und Migration ergänzen
-- [ ] Dokumentation und changelog aktualisieren
+- [x] Bibliothek `bcrypt` als Abhängigkeit einbinden
+- [x] Passwort-Hashing bei Registrierung auf bcrypt umstellen
+- [x] Existierende Passwörter beim ersten Login migrieren
+- [x] Authentifizierung mit bcrypt-Hashes prüfen
+- [x] Tests für Registrierung, Login und Migration ergänzen
+- [x] Dokumentation und changelog aktualisieren
 
 ## Milestone 17: Agenten-Erstellung
 - [ ] Dialog "Agent anlegen" in der GUI bereitstellen

@@ -42,3 +42,5 @@
 - Konzeptabgleich 2025-08-18: README verlangt Admin-Rechte fuer Projektloeschung und Konfiguration. Funktion fehlt. Milestone 15 angelegt.
 
 - Konzeptabgleich 2025-08-19: README fordert bcrypt-Hashing. Muss noch umgesetzt werden (Milestone 16).
+- Milestone 15 umgesetzt: Projekte lassen sich nun durch Admins löschen und das Settings-Fenster ist nur noch für Admins sichtbar.
+- Milestone 16 gestartet: Passwort-Hashing verwendet bcrypt; Altdaten werden beim ersten Login migriert.

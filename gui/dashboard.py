@@ -3,7 +3,13 @@ from __future__ import annotations
 from PySide6 import QtWidgets, QtCore
 import threading
 
-from db import create_project, get_projects, get_project, set_project_workspace
+from db import (
+    create_project,
+    get_projects,
+    get_project,
+    set_project_workspace,
+    delete_project,
+)
 from core import AIController
 from .taskmanager import TaskManagerWindow
 from services import start_share, stop_share
@@ -46,6 +52,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.status_label = QtWidgets.QLabel("AI Status: Idle")
         self.settings_btn = QtWidgets.QPushButton("Settings")
         self.admin_btn = QtWidgets.QPushButton("Admin Panel")
+        self.delete_btn = QtWidgets.QPushButton("Delete Project")
 
         central = QtWidgets.QWidget()
         layout = QtWidgets.QVBoxLayout(central)
@@ -64,8 +71,9 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.tasks_btn)
         layout.addWidget(self.status_btn)
         layout.addWidget(self.status_label)
-        layout.addWidget(self.settings_btn)
         if role == "admin":
+            layout.addWidget(self.settings_btn)
+            layout.addWidget(self.delete_btn)
             layout.addWidget(self.admin_btn)
         self.setCentralWidget(central)
 
@@ -83,6 +91,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.status_btn.clicked.connect(self.view_status)
         self.settings_btn.clicked.connect(self.open_settings)
         self.admin_btn.clicked.connect(self.open_admin)
+        self.delete_btn.clicked.connect(self.delete_project)
         self.load_projects()
         self._share_server = None
         self.controller: AIController | None = None
@@ -193,6 +202,9 @@ class Dashboard(QtWidgets.QMainWindow):
         )
 
     def open_settings(self) -> None:
+        if self.role != "admin":
+            QtWidgets.QMessageBox.warning(self, "Access", "Admins only")
+            return
         win = SettingsWindow()
         win.exec()
 
@@ -209,6 +221,21 @@ class Dashboard(QtWidgets.QMainWindow):
         if project_id is not None:
             win = TaskManagerWindow(self.conn, project_id)
             win.show()
+
+    def delete_project(self) -> None:
+        if self.role != "admin":
+            QtWidgets.QMessageBox.warning(self, "Access", "Admins only")
+            return
+        project_id = self.selected_project_id()
+        if project_id is None:
+            return
+        if QtWidgets.QMessageBox.question(
+            self,
+            "Delete",
+            "Really delete this project?",
+        ) == QtWidgets.QMessageBox.Yes:
+            delete_project(self.conn, project_id)
+            self.load_projects()
 
     def update_status(self) -> None:
         if self.controller and self.controller.running:

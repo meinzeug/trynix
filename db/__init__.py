@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 import sqlite3
 import hashlib
+import bcrypt
 
 
 def connect(db_path: Path) -> sqlite3.Connection:
@@ -12,10 +13,21 @@ def connect(db_path: Path) -> sqlite3.Connection:
 
 
 def hash_password(password: str) -> str:
-    return hashlib.sha256(password.encode()).hexdigest()
+    """Return a bcrypt hash for the given password."""
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
 
-def create_user(conn: sqlite3.Connection, username: str, password: str, role: str = "user") -> None:
+def verify_password(password: str, hashed: str) -> bool:
+    """Check password against stored hash (bcrypt or legacy sha256)."""
+    if hashed.startswith("$2b$"):
+        return bcrypt.checkpw(password.encode(), hashed.encode())
+    return hashlib.sha256(password.encode()).hexdigest() == hashed
+
+
+def create_user(
+    conn: sqlite3.Connection, username: str, password: str, role: str = "user"
+) -> None:
+    """Create a new user with a bcrypt hashed password."""
     password_hash = hash_password(password)
     with conn:
         conn.execute(
@@ -30,13 +42,23 @@ def get_user(conn: sqlite3.Connection, user_id: int) -> sqlite3.Row | None:
     ).fetchone()
 
 
-def authenticate_user(conn: sqlite3.Connection, username: str, password: str) -> tuple[int | None, str | None]:
+def authenticate_user(
+    conn: sqlite3.Connection, username: str, password: str
+) -> tuple[int | None, str | None]:
     """Return user id and role if credentials are valid, otherwise (None, None)."""
     row = conn.execute(
         "SELECT id, password_hash, role FROM users WHERE username=?",
         (username,),
     ).fetchone()
-    if row and row["password_hash"] == hash_password(password):
+    if row and verify_password(password, row["password_hash"]):
+        # migrate legacy sha256 hashes to bcrypt
+        if not row["password_hash"].startswith("$2b$"):
+            new_hash = hash_password(password)
+            with conn:
+                conn.execute(
+                    "UPDATE users SET password_hash=? WHERE id=?",
+                    (new_hash, row["id"]),
+                )
         return row["id"], row["role"]
     return None, None
 
@@ -88,6 +110,15 @@ def get_project(conn: sqlite3.Connection, project_id: int) -> sqlite3.Row | None
         "SELECT id, name, workspace, roadmap FROM projects WHERE id=?",
         (project_id,),
     ).fetchone()
+
+
+def delete_project(conn: sqlite3.Connection, project_id: int) -> None:
+    """Delete project and all related data."""
+    with conn:
+        conn.execute("DELETE FROM code_files WHERE project_id=?", (project_id,))
+        conn.execute("DELETE FROM tasks WHERE project_id=?", (project_id,))
+        conn.execute("DELETE FROM messages WHERE project_id=?", (project_id,))
+        conn.execute("DELETE FROM projects WHERE id=?", (project_id,))
 
 
 def set_project_workspace(conn: sqlite3.Connection, project_id: int, workspace: str) -> None:
