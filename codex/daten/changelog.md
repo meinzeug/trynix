@@ -37,3 +37,4 @@
 - 2025-08-20: Milestone 15 umgesetzt: Projektloeschung nur fuer Admins, Settings-Fenster ebenfalls eingeschraenkt.
 - 2025-08-20: Milestone 16 gestartet: Passwort-Hashing mit bcrypt implementiert und Migration beim Login eingebaut.
 - 2025-08-21: Milestone 16 abgeschlossen: Tests fuer Registrierung und Admin-Rechte ergaenzt, Dokumentation aktualisiert.
+- 2025-08-22: Umsetzung und Tests von Milestone 15 und 16 verifiziert.
