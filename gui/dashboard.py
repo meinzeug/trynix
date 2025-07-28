@@ -6,6 +6,7 @@ from db import create_project, get_projects
 from core import AIController
 from .chat import ChatWindow
 from .codeviewer import CodeViewer
+from .status import StatusWindow
 
 
 class Dashboard(QtWidgets.QMainWindow):
@@ -19,6 +20,7 @@ class Dashboard(QtWidgets.QMainWindow):
         self.new_btn = QtWidgets.QPushButton("New Project")
         self.chat_btn = QtWidgets.QPushButton("Open Chat")
         self.code_btn = QtWidgets.QPushButton("View Code")
+        self.status_btn = QtWidgets.QPushButton("View Status")
         self.run_btn = QtWidgets.QPushButton("Run AI")
 
         central = QtWidgets.QWidget()
@@ -29,12 +31,14 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.run_btn)
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
+        layout.addWidget(self.status_btn)
         self.setCentralWidget(central)
 
         self.new_btn.clicked.connect(self.create_project)
         self.run_btn.clicked.connect(self.start_ai)
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
+        self.status_btn.clicked.connect(self.view_status)
         self.load_projects()
 
     def load_projects(self) -> None:
@@ -65,6 +69,12 @@ class Dashboard(QtWidgets.QMainWindow):
         project_id = self.selected_project_id()
         if project_id is not None:
             win = CodeViewer(self.conn, project_id)
+            win.show()
+
+    def view_status(self) -> None:
+        project_id = self.selected_project_id()
+        if project_id is not None:
+            win = StatusWindow(self.conn, project_id)
             win.show()
 
     def start_ai(self) -> None:

@@ -25,7 +25,7 @@
 ## Milestone 5: Sprachsteuerung & erweiterte GUI
 - [x] STT-Modul fuer Spracheingabe integrieren
 - [x] Mikrofon-Button in der GUI
-- [ ] Live-Status der Agenten anzeigen
+- [x] Live-Status der Agenten anzeigen
 
 ## Milestone 6: Multi-Projekt und Benutzerrollen
 - [ ] Mehrere Projekte parallel verwalten
