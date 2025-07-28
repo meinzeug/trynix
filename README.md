@@ -28,6 +28,8 @@ Die Software führt ein ganzes KI-Entwicklungsteam – eine Projektleiterin-KI (
   Sobald das Projekt abgeschlossen ist, kann es direkt aus der App als ZIP-Datei exportiert werden.
 - 🧠 **Eigene KI-Agenten & Tools**
   Die App bietet eine grafische Oberfläche zum Erstellen neuer Agenten und deren Werkzeuge.
+  Ein integrierter Tool-Baukasten speichert neue Tools in `tools.yaml` und registriert sie beim Programmstart.
+  Agenten können nur bekannte Tools nutzen – unbekannte Namen führen zu einer Fehlermeldung.
   Diese Agenten können spezialisierte Aufgaben übernehmen und nahtlos mit der Queen zusammenarbeiten.
 - 🧠 **Zentrale Kontext-Engine**
   Die App speichert fortlaufend den Zustand aller Agenten, Aufgaben und Dialoge in einer zentralen Kontextstruktur.

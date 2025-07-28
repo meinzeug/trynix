@@ -47,9 +47,10 @@
 - Milestone 17 umgesetzt: Neuer Dialog zum Anlegen von Agenten, YAML-Speicherung
   und Plugin zum Laden der definierten Agenten. Tests decken Speicherung und
   Registrierung ab.
-- Milestone 18 umgesetzt: Tool-Editor erstellt, Tools werden persistent in
-  `tools.yaml` gespeichert und beim Start registriert. Der Agenten-Dialog zeigt
-  verfügbare Tools zur Auswahl und Tests prüfen Registrierung und Zuordnung.
+ - Milestone 18 umgesetzt: Tool-Editor erstellt, Tools werden persistent in
+   `tools.yaml` gespeichert und beim Start registriert. Der Agenten-Dialog zeigt
+   verfügbare Tools zur Auswahl und Tests prüfen Registrierung und Zuordnung.
+   Beim Laden von YAML-Agenten wird nun geprüft, ob alle referenzierten Tools existieren.
 - Milestone 19 umgesetzt: Controller lädt alle registrierten Agenten dynamisch,
   Dashboard bietet einen Dialog zum Aktivieren oder Deaktivieren.
 - Milestone 20 abgeschlossen: Zentrale Kontext-Engine speichert alle
