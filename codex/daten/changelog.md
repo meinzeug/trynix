@@ -12,3 +12,5 @@
 - 2025-08-01: STT-Modul und Mikrofon-Button im Chatfenster integriert.
 
 - 2025-08-02: Automatisches Abhaken der Milestones implementiert.
+- 2025-08-03: TestWorker fuehrt nach jeder Codegenerierung einen Syntaxcheck
+  aus und protokolliert das Ergebnis. Milestone 4 Test-Tasks abgeschlossen.
