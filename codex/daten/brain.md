@@ -34,3 +34,4 @@
 - Neue Milestones 8 bis 11 entsprechend angelegt.
 - Milestone 8 gestartet: Dashboard erhielt Pause/Resume und Task-Manager, AIController verfuegt nun ueber Pausenlogik.
 - Milestone 9 abgeschlossen: Python-Code wird im Code-Viewer farbig hervorgehoben und einzelne Dateien koennen gespeichert werden.
+- Milestone 10 umgesetzt: Queen-Nachrichten werden bei aktivierter Einstellung automatisch per TTS vorgelesen. Settings-Fenster bietet nun Checkbox zur Steuerung.

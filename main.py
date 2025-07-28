@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from PySide6 import QtWidgets
 
-from core.config import Config
+from core import CONFIG
 from core.logger import init_logging
 from db import connect
 from db.init_db import init_db
@@ -11,10 +11,9 @@ from core.plugins import load_plugins
 
 
 def main() -> None:
-    config = Config.load("config.json")
-    init_logging(config.log_dir)
-    init_db(config.db_path)
-    conn = connect(config.db_path)
+    init_logging(CONFIG.log_dir)
+    init_db(CONFIG.db_path)
+    conn = connect(CONFIG.db_path)
 
     app = QtWidgets.QApplication([])
     load_plugins(app)

@@ -5,6 +5,7 @@ from PySide6 import QtWidgets
 from db import add_message, get_messages
 
 from speech import transcribe_from_microphone, speak
+from core.config import CONFIG
 
 class ChatWindow(QtWidgets.QWidget):
     def __init__(self, conn, project_id: int) -> None:
@@ -57,7 +58,7 @@ class ChatWindow(QtWidgets.QWidget):
         text = self.input_edit.text().strip()
         if not text:
             text = self.messages_view.toPlainText().splitlines()[-1] if self.messages_view.toPlainText() else ""
-        if text:
+        if text and CONFIG.tts_enabled:
             speak(text)
 
 
