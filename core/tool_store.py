@@ -30,3 +30,11 @@ def add_tool(tool: Dict[str, str], path: Path = TOOLS_FILE) -> None:
         raise ValueError("Tool name already exists")
     tools.append(tool)
     save_tools(tools, path)
+
+
+def remove_tool(name: str, path: Path = TOOLS_FILE) -> None:
+    """Remove a tool definition by name."""
+    tools = load_tools(path)
+    filtered = [t for t in tools if t.get("name") != name]
+    if len(filtered) != len(tools):
+        save_tools(filtered, path)

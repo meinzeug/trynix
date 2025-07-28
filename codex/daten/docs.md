@@ -86,7 +86,7 @@
 ## Eigene Agenten & Tools
 Neue Agenten werden als Python-Klassen definiert, die `BaseAgent` erweitern. Eine YAML-Datei `agents.yaml` speichert Name, Beschreibung, Spezialisierung und optionale Fähigkeiten. Beim Start lädt ein Plugin diese Datei, erzeugt entsprechende Agentenklassen und meldet sie über `register_agent()` im System an.
 
-Tools sind ebenfalls per YAML konfigurierbar. Jede Definition enthält `name`, `description`, `command` und optionale Eingabeparameter. Ein Tool-Editor im Adminbereich schreibt neue Einträge in `tools.yaml` und registriert sie beim Start automatisch. Die Agentenkonfiguration legt fest, welche Tools ein Agent verwenden darf. Beim Laden prüft das Plugin, ob alle genannten Tools existieren und ordnet sie den Agenten zu.
+Tools sind ebenfalls per YAML konfigurierbar. Jede Definition enthält `name`, `description`, `command` und optionale Eingabeparameter. Ein Tool-Editor im Adminbereich schreibt neue Einträge in `tools.yaml` und registriert sie beim Start automatisch. Über dieselbe Schnittstelle lassen sich Einträge bei Bedarf auch wieder entfernen. Die Agentenkonfiguration legt fest, welche Tools ein Agent verwenden darf. Beim Laden prüft das Plugin, ob alle genannten Tools existieren und ordnet sie den Agenten zu.
 
 Die Queen lädt alle über Plugins registrierten Agenten automatisch und stellt sie dem Controller bereit. Über das Dashboard lassen sich Agenten bei Bedarf deaktivieren.
 
