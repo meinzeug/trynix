@@ -62,6 +62,8 @@
 - Die GUI zeigt den Ordner mit `QFileSystemModel` live an und aktualisiert sich bei Änderungen.
 - Beim Anklicken einer Datei öffnet sich ein schreibgeschützter Editor mit Syntaxhighlighting.
 - Über einen Export-Button wird der Projektordner mit `shutil.make_archive` als ZIP gepackt und kann gespeichert werden.
+- Der Pfad zum jeweils aktiven Workspace wird in der Tabelle `projects` gespeichert.
+- `QFileSystemModel` überwacht das Verzeichnis und meldet Änderungen über `directoryChanged`-Signale.
 
 ## Dynamische Roadmap & Queen-Dialog
 - Nach der Projektanlage erzeugt die Queen automatisch ein Konzept und eine detaillierte Roadmap.

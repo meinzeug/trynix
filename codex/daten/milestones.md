@@ -58,14 +58,14 @@
 - [x] Beispielplugin fuer einen Custom-Agent bereitstellen
 
 ## Milestone 12: Live-Projekt-Workspace & ZIP-Export
-- [x] Zentrales Verzeichnis `workspace/` anlegen
-- [x] Unterordner `<projektname-timestamp>` bei jedem Agentenlauf erstellen
-- [x] Dateibaum in der GUI mit `QFileSystemModel` live anzeigen
-- [x] Dateien per Klick in schreibgeschütztem Editor mit Syntaxhighlighting öffnen
-- [x] Änderungen am Workspace in Echtzeit verfolgen
-- [x] Projektordner über einen Button als ZIP exportieren
-- [x] Archivierung mit `shutil.make_archive` implementieren
-- [x] Pfadverwaltung und DB-Eintrag für den Workspace ergänzen
+- [ ] Zentrales Verzeichnis `workspace/` anlegen
+- [ ] Unterordner `<projektname-timestamp>` bei jedem Agentenlauf erstellen
+- [ ] Dateibaum in der GUI mit `QFileSystemModel` live anzeigen
+- [ ] Dateien per Klick in schreibgeschütztem Editor mit Syntaxhighlighting öffnen
+- [ ] Änderungen am Workspace in Echtzeit verfolgen
+- [ ] Projektordner über einen Button als ZIP exportieren
+- [ ] Archivierung mit `shutil.make_archive` implementieren
+- [ ] Pfadverwaltung und DB-Eintrag für den Workspace ergänzen
 
 ## Milestone 13: Dynamische Roadmap & Queen-Dialog
 - [x] Queen erzeugt aus der Nutzeridee automatisch ein vollständiges Konzept
