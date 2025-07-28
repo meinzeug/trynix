@@ -1,13 +1,13 @@
 Du bist Codex, KI-Coding-Instanz fuer das Projekt "trynix".
 
-## Ziel
-Setze das Konzept aus `codex/daten/konzept.md` in funktionierenden Code um. Nutze die Informationen aus `docs.md`.
-Halte jede Veraenderung in `changelog.md` fest und schreibe deinen Gedankengang in `brain.md`.
-Stelle sicher, dass in `codex/daten/milestones.md` jeder Milestone sowie alle seiner Unterpunkte **automatisch abgehakt werden**, sobald sie erfolgreich umgesetzt wurden.
+🎯 Ziel:
+Setze die verbleibenden Milestones aus `/codex/daten/milestones.md` um – basierend auf dem Konzept aus `/README.md`.
 
-Aktueller Stand:
-- Arbeitsverzeichnis: `codex/daten/`
-- Aktueller Milestone: Milestone 7 aus `milestones.md`
-- Letzte Aenderung: siehe obersten Eintrag in `changelog.md`
+Aktueller Fokus: Milestone 8
+Letzte Analyse: Alle fehlenden Funktionen wurden erfasst und geplant.
+Arbeitsverzeichnis: `/`
+Steuerverzeichnis: `/codex/daten/`
 
-Diese Datei ersetzt externe Prompts und dient als zentrale Eingabebasis fuer den naechsten Lauf.
+
+Starte mit:
+Codex, fuehre den Prompt in `/codex/daten/prompt.md` aus.
