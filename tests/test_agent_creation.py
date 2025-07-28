@@ -25,6 +25,14 @@ def test_plugin_register(tmp_path):
     assert "beta" in AGENT_REGISTRY
 
 
+def test_plugin_unknown_tool(tmp_path):
+    path = tmp_path / "agents.yaml"
+    add_agent({"name": "delta", "tools": "missing"}, path)
+    plugin = Plugin(path)
+    with pytest.raises(ValueError):
+        plugin.register(None)
+
+
 def test_agent_with_tools(tmp_path):
     path = tmp_path / "agents.yaml"
     add_agent({"name": "gamma", "description": "", "specialization": "", "abilities": "", "tools": "lint"}, path)
