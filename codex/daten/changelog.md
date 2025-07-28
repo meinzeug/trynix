@@ -32,3 +32,5 @@
 - 2025-08-16: Milestone 14 gestartet: Zauberstab-Feature und Feature Wizard hinzugefügt.
 - 2025-08-17: Abschließende Tests durchgeführt und Refactoring des LAN-Sharing-Service.
 - 2025-08-18: Konzeptpruefung: Adminrechte fuer Projekte und Settings fehlen. Milestone 15 eingetragen.
+
+- 2025-08-19: Konzeptpruefung ergab fehlendes bcrypt-Hashing. Milestone 16 hinzugefuegt.
