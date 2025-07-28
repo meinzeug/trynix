@@ -5,6 +5,7 @@ from .codeviewer import CodeViewer
 from .status import StatusWindow
 from .admin import AdminWindow
 from .settings import SettingsWindow
+from .taskmanager import TaskManagerWindow
 
 __all__ = [
     "LoginWindow",
@@ -14,4 +15,5 @@ __all__ = [
     "StatusWindow",
     "AdminWindow",
     "SettingsWindow",
+    "TaskManagerWindow",
 ]

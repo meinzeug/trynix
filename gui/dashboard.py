@@ -1,9 +1,11 @@
 from __future__ import annotations
 
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtCore
+import threading
 
 from db import create_project, get_projects
 from core import AIController
+from .taskmanager import TaskManagerWindow
 from services import start_share, stop_share
 from .chat import ChatWindow
 from .codeviewer import CodeViewer
@@ -26,8 +28,12 @@ class Dashboard(QtWidgets.QMainWindow):
         self.chat_btn = QtWidgets.QPushButton("Open Chat")
         self.code_btn = QtWidgets.QPushButton("View Code")
         self.status_btn = QtWidgets.QPushButton("View Status")
+        self.tasks_btn = QtWidgets.QPushButton("Manage Tasks")
         self.run_btn = QtWidgets.QPushButton("Run AI")
+        self.pause_btn = QtWidgets.QPushButton("Pause")
+        self.resume_btn = QtWidgets.QPushButton("Resume")
         self.share_btn = QtWidgets.QPushButton("Share Project")
+        self.status_label = QtWidgets.QLabel("AI Status: Idle")
         self.settings_btn = QtWidgets.QPushButton("Settings")
         self.admin_btn = QtWidgets.QPushButton("Admin Panel")
 
@@ -37,10 +43,14 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.project_list)
         layout.addWidget(self.new_btn)
         layout.addWidget(self.run_btn)
+        layout.addWidget(self.pause_btn)
+        layout.addWidget(self.resume_btn)
         layout.addWidget(self.share_btn)
         layout.addWidget(self.chat_btn)
         layout.addWidget(self.code_btn)
+        layout.addWidget(self.tasks_btn)
         layout.addWidget(self.status_btn)
+        layout.addWidget(self.status_label)
         layout.addWidget(self.settings_btn)
         if role == "admin":
             layout.addWidget(self.admin_btn)
@@ -48,6 +58,9 @@ class Dashboard(QtWidgets.QMainWindow):
 
         self.new_btn.clicked.connect(self.create_project)
         self.run_btn.clicked.connect(self.start_ai)
+        self.pause_btn.clicked.connect(self.pause_ai)
+        self.resume_btn.clicked.connect(self.resume_ai)
+        self.tasks_btn.clicked.connect(self.manage_tasks)
         self.share_btn.clicked.connect(self.share_project)
         self.chat_btn.clicked.connect(self.open_chat)
         self.code_btn.clicked.connect(self.open_code)
@@ -56,6 +69,11 @@ class Dashboard(QtWidgets.QMainWindow):
         self.admin_btn.clicked.connect(self.open_admin)
         self.load_projects()
         self._share_server = None
+        self.controller: AIController | None = None
+        self._thread: threading.Thread | None = None
+        self._status_timer = QtCore.QTimer(self)
+        self._status_timer.timeout.connect(self.update_status)
+        self._status_timer.start(500)
 
     def load_projects(self) -> None:
         self.projects = get_projects(self.conn, self.user_id, self.role)
@@ -99,9 +117,16 @@ class Dashboard(QtWidgets.QMainWindow):
             return
         idea, ok = QtWidgets.QInputDialog.getText(self, "Project Idea", "Describe project idea:")
         if ok and idea:
-            controller = AIController(self.conn)
-            controller.run_project(project_id, idea)
-            QtWidgets.QMessageBox.information(self, "AI", "Project completed")
+            if self.controller and self.controller.running:
+                QtWidgets.QMessageBox.information(self, "AI", "AI already running")
+                return
+            self.controller = AIController(self.conn)
+            self._thread = threading.Thread(
+                target=self.controller.run_project,
+                args=(project_id, idea),
+                daemon=True,
+            )
+            self._thread.start()
 
     def share_project(self) -> None:
         project_id = self.selected_project_id()
@@ -117,6 +142,27 @@ class Dashboard(QtWidgets.QMainWindow):
     def open_settings(self) -> None:
         win = SettingsWindow()
         win.exec()
+
+    def pause_ai(self) -> None:
+        if self.controller:
+            self.controller.pause()
+
+    def resume_ai(self) -> None:
+        if self.controller:
+            self.controller.resume()
+
+    def manage_tasks(self) -> None:
+        project_id = self.selected_project_id()
+        if project_id is not None:
+            win = TaskManagerWindow(self.conn, project_id)
+            win.show()
+
+    def update_status(self) -> None:
+        if self.controller and self.controller.running:
+            status = "Paused" if self.controller.is_paused() else "Running"
+        else:
+            status = "Idle"
+        self.status_label.setText(f"AI Status: {status}")
 
     def open_admin(self) -> None:
         win = AdminWindow(self.conn)

@@ -152,3 +152,14 @@ def update_task_status(conn: sqlite3.Connection, task_id: int, status: str) -> N
             (status, task_id),
         )
 
+
+def update_task_description(
+    conn: sqlite3.Connection, task_id: int, description: str
+) -> None:
+    """Update the description of an existing task."""
+    with conn:
+        conn.execute(
+            "UPDATE tasks SET description=? WHERE id=?",
+            (description, task_id),
+        )
+
