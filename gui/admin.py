@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from PySide6 import QtWidgets
+from .agent_creator import AgentCreatorDialog
 
 from db import get_users, delete_user
 
@@ -19,10 +20,12 @@ class AdminWindow(QtWidgets.QWidget):
 
         self.refresh_btn = QtWidgets.QPushButton("Refresh")
         self.delete_btn = QtWidgets.QPushButton("Delete")
+        self.new_agent_btn = QtWidgets.QPushButton("New Agent")
 
         btn_layout = QtWidgets.QHBoxLayout()
         btn_layout.addWidget(self.refresh_btn)
         btn_layout.addWidget(self.delete_btn)
+        btn_layout.addWidget(self.new_agent_btn)
 
         layout = QtWidgets.QVBoxLayout(self)
         layout.addWidget(self.table)
@@ -30,6 +33,7 @@ class AdminWindow(QtWidgets.QWidget):
 
         self.refresh_btn.clicked.connect(self.load_users)
         self.delete_btn.clicked.connect(self.delete_selected)
+        self.new_agent_btn.clicked.connect(self.create_agent)
 
         self.load_users()
 
@@ -51,3 +55,7 @@ class AdminWindow(QtWidgets.QWidget):
         user_id = int(user_id_item.text())
         delete_user(self.conn, user_id)
         self.load_users()
+
+    def create_agent(self) -> None:
+        dlg = AgentCreatorDialog(self)
+        dlg.exec()

@@ -105,10 +105,10 @@
 - [x] Dokumentation und changelog aktualisieren
 
 ## Milestone 17: Agenten-Erstellung
-- [ ] Dialog "Agent anlegen" in der GUI bereitstellen
-- [ ] Backend-Routinen zum Speichern neuer Agenten (DB oder YAML)
-- [ ] Eingaben: Name, Beschreibung, Spezialisierung, Fähigkeiten
-- [ ] Validierung und Tests der Eingaben
+- [x] Dialog "Agent anlegen" in der GUI bereitstellen
+- [x] Backend-Routinen zum Speichern neuer Agenten (DB oder YAML)
+- [x] Eingaben: Name, Beschreibung, Spezialisierung, Fähigkeiten
+- [x] Validierung und Tests der Eingaben
 
 ## Milestone 18: Tool-Baukasten & Registrierung
 - [ ] Editor zum Definieren neuer Tools (Name, Beschreibung, Kommando, Parameter)
