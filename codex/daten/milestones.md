@@ -40,42 +40,42 @@
 
 
 ## Milestone 8: Erweiterte Live-Steuerung
-- [ ] KI-Ausfuehrung im Dashboard pausieren und fortsetzen koennen
-- [ ] Tasks manuell bearbeiten oder neue hinzufuegen
-- [ ] UI-Statusanzeige fuer laufende/pausierte Prozesse
-- [ ] AIController um Pausen-Logik erweitern
+- [x] KI-Ausfuehrung im Dashboard pausieren und fortsetzen koennen
+- [x] Tasks manuell bearbeiten oder neue hinzufuegen
+- [x] UI-Statusanzeige fuer laufende/pausierte Prozesse
+- [x] AIController um Pausen-Logik erweitern
 
 ## Milestone 9: Verbesserter Code-Viewer
-- [ ] Syntaxhighlighting fuer Python-Code implementieren
-- [ ] Option zum Speichern einzelner Dateien
+- [x] Syntaxhighlighting fuer Python-Code implementieren
+- [x] Option zum Speichern einzelner Dateien
 
 ## Milestone 10: Automatische Queen-TTS
-- [ ] Queen-Nachrichten automatisch ueber TTS ausgeben
-- [ ] Schalter in den Einstellungen zum Aktivieren/Deaktivieren
+- [x] Queen-Nachrichten automatisch ueber TTS ausgeben
+- [x] Schalter in den Einstellungen zum Aktivieren/Deaktivieren
 
 ## Milestone 11: Agenten-Plugin-System
 - [x] Plugin-Schnittstelle erweitern, um neue Agenten einzubinden
-- [ ] Beispielplugin fuer einen Custom-Agent bereitstellen
+- [x] Beispielplugin fuer einen Custom-Agent bereitstellen
 
 ## Milestone 12: Live-Projekt-Workspace & ZIP-Export
- - [ ] Zentrales Verzeichnis `workspace/` anlegen
- - [ ] Unterordner `<projektname-timestamp>` bei jedem Agentenlauf erstellen
- - [ ] Dateibaum in der GUI mit `QFileSystemModel` live anzeigen
- - [ ] Dateien per Klick in schreibgeschütztem Editor mit Syntaxhighlighting öffnen
- - [ ] Änderungen am Workspace in Echtzeit verfolgen
- - [ ] Projektordner über einen Button als ZIP exportieren
- - [ ] Archivierung mit `shutil.make_archive` implementieren
- - [ ] Pfadverwaltung und DB-Eintrag für den Workspace ergänzen
+ - [x] Zentrales Verzeichnis `workspace/` anlegen
+ - [x] Unterordner `<projektname-timestamp>` bei jedem Agentenlauf erstellen
+ - [x] Dateibaum in der GUI mit `QFileSystemModel` live anzeigen
+ - [x] Dateien per Klick in schreibgeschütztem Editor mit Syntaxhighlighting öffnen
+ - [x] Änderungen am Workspace in Echtzeit verfolgen
+ - [x] Projektordner über einen Button als ZIP exportieren
+ - [x] Archivierung mit `shutil.make_archive` implementieren
+ - [x] Pfadverwaltung und DB-Eintrag für den Workspace ergänzen
 
 ## Milestone 13: Dynamische Roadmap & Queen-Dialog
-- [ ] Queen erzeugt aus der Nutzeridee automatisch ein vollständiges Konzept
+- [x] Queen erzeugt aus der Nutzeridee automatisch ein vollständiges Konzept
   (Funktionsübersicht, Struktur und Technologieeinsatz).
-- [ ] Generierte Roadmap mit Meilensteinen und Subtasks dauerhaft speichern
+- [x] Generierte Roadmap mit Meilensteinen und Subtasks dauerhaft speichern
   (JSON-Datei und DB-Eintrag).
-- [ ] GUI zeigt eine Live-Roadmap-Ansicht mit Status (offen/in Arbeit/erledigt).
-- [ ] Queen überwacht die Roadmap und markiert erledigte Punkte automatisch.
-- [ ] Änderungswünsche lassen sich über Chat oder Spracheingabe einreichen.
-- [ ] Nach Bestätigung durch die Queen wird die Roadmap angepasst und erneut
+- [x] GUI zeigt eine Live-Roadmap-Ansicht mit Status (offen/in Arbeit/erledigt).
+- [x] Queen überwacht die Roadmap und markiert erledigte Punkte automatisch.
+- [x] Änderungswünsche lassen sich über Chat oder Spracheingabe einreichen.
+- [x] Nach Bestätigung durch die Queen wird die Roadmap angepasst und erneut
   gespeichert.
 
 ## Milestone 14: Zauberstab - automatische Feature-Innovation
