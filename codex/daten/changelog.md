@@ -23,3 +23,4 @@
 - 2025-08-08: Adminpanel und Settings-Fenster hinzugefuegt; Dokumentation ergaenzt.
 - 2025-08-09: Milestone-Updater-Plugin hinzugefuegt. Aktualisiert Milestones automatisch beim Programmstart.
 - 2025-08-09: Konzeptpruefung abgeschlossen. Fehlende Funktionen ermittelt und Milestones 8-11 angelegt (Live-Steuerung, Code-Highlighting, Queen-TTS, Agenten-Plugins).
+- 2025-08-10: Milestone 8 begonnen: AIController pausierbar, Dashboard mit Pause/Resume-Buttons und Task-Manager.

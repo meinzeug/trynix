@@ -51,4 +51,4 @@ Deine Aufgabe ist es jetzt, mit der **technischen Umsetzung der geplanten Funkti
 
 ---
 
-[Codex aktiviert – beginne jetzt mit der technischen Umsetzung der Milestones gemäß Roadmap in /codex/daten/milestones.md]
+[Codex aktiviert – fahre fort mit Milestone 9 (Verbesserter Code-Viewer)]

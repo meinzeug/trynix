@@ -50,6 +50,11 @@
 - `lan_share.py` ermoeglicht Projekt-Sharing ueber einen lokalen HTTP-Server
 - Adminpanel und Settings-Fenster sind in der GUI integriert
 
+## Erweiterte Live-Steuerung
+- KI-Laeufe lassen sich im Dashboard pausieren und fortsetzen.
+- Tasks koennen manuell bearbeitet oder neu angelegt werden.
+- Eine Statusanzeige zeigt "Running" oder "Paused" an.
+
 ## Projekt-Workspace & ZIP-Export
 - Alle generierten Dateien liegen in einem zentralen Ordner `workspace/`.
 - Jeder KI-Lauf legt darunter einen Unterordner mit `<projektname-timestamp>` an.

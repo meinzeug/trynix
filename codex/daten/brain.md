@@ -32,3 +32,4 @@
   - Automatische TTS-Ausgabe fuer Queen-Meldungen
   - Erweiterbare Agenten via Plugin-Schnittstelle
 - Neue Milestones 8 bis 11 entsprechend angelegt.
+- Milestone 8 gestartet: Dashboard erhielt Pause/Resume und Task-Manager, AIController verfuegt nun ueber Pausenlogik.

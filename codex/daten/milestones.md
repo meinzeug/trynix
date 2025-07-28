@@ -40,10 +40,10 @@
 
 
 ## Milestone 8: Erweiterte Live-Steuerung
-- [ ] KI-Ausfuehrung im Dashboard pausieren und fortsetzen koennen
-- [ ] Tasks manuell bearbeiten oder neue hinzufuegen
-- [ ] UI-Statusanzeige fuer laufende/pausierte Prozesse
-- [ ] AIController um Pausen-Logik erweitern
+- [x] KI-Ausfuehrung im Dashboard pausieren und fortsetzen koennen
+- [x] Tasks manuell bearbeiten oder neue hinzufuegen
+- [x] UI-Statusanzeige fuer laufende/pausierte Prozesse
+- [x] AIController um Pausen-Logik erweitern
 
 ## Milestone 9: Verbesserter Code-Viewer
 - [ ] Syntaxhighlighting fuer Python-Code implementieren
