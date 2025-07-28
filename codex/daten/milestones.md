@@ -111,11 +111,11 @@
 - [x] Validierung und Tests der Eingaben
 
 ## Milestone 18: Tool-Baukasten & Registrierung
-- [ ] Editor zum Definieren neuer Tools (Name, Beschreibung, Kommando, Parameter)
-- [ ] Tools persistent speichern und beim App-Start laden
-- [ ] Zuordnung von Tools zu Agenten in der UI ermöglichen
-- [ ] Registrierung der Tools im System prüfen
-- [ ] Tests für Tool-Verwaltung und -Zuordnung
+- [x] Editor zum Definieren neuer Tools (Name, Beschreibung, Kommando, Parameter)
+- [x] Tools persistent speichern und beim App-Start laden
+- [x] Zuordnung von Tools zu Agenten in der UI ermöglichen
+- [x] Registrierung der Tools im System prüfen
+- [x] Tests für Tool-Verwaltung und -Zuordnung
 
 ## Milestone 19: Integration in Queen- und Agentensystem
 - [ ] Queen lädt neue Agenten automatisch und aktiviert sie
