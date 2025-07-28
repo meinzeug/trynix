@@ -52,3 +52,6 @@
   verfügbare Tools zur Auswahl und Tests prüfen Registrierung und Zuordnung.
 - Milestone 19 umgesetzt: Controller lädt alle registrierten Agenten dynamisch,
   Dashboard bietet einen Dialog zum Aktivieren oder Deaktivieren.
+- Milestone 20 abgeschlossen: Zentrale Kontext-Engine speichert alle
+  Zustände in `context_state.json`, kann optional in der DB gesichert werden
+  und ist über ein eigenes GUI-Fenster einsehbar.
