@@ -30,3 +30,4 @@
 - 2025-08-14: Milestone 12 umgesetzt: Projekt-Workspace mit Live-Dateibaum und ZIP-Export hinzugefügt.
 - 2025-08-15: Milestone 13 umgesetzt: dynamische Roadmap mit GUI-Ansicht und Chat-Integration.
 - 2025-08-16: Milestone 14 gestartet: Zauberstab-Feature und Feature Wizard hinzugefügt.
+- 2025-08-17: Abschließende Tests durchgeführt und Refactoring des LAN-Sharing-Service.

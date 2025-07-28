@@ -184,9 +184,13 @@ class Dashboard(QtWidgets.QMainWindow):
         if self._share_server is not None:
             QtWidgets.QMessageBox.information(self, "Share", "Project is already being shared")
             return
-        server, thread, tmpdir, url = start_share(self.conn, project_id)
-        self._share_server = (server, thread, tmpdir)
-        QtWidgets.QMessageBox.information(self, "Share", f"Project available at {url}\nServer stops when application closes")
+        info = start_share(self.conn, project_id)
+        self._share_server = info
+        QtWidgets.QMessageBox.information(
+            self,
+            "Share",
+            f"Project available at {info.url}\nServer stops when application closes",
+        )
 
     def open_settings(self) -> None:
         win = SettingsWindow()
@@ -219,6 +223,6 @@ class Dashboard(QtWidgets.QMainWindow):
 
     def closeEvent(self, event) -> None:
         if self._share_server is not None:
-            stop_share(*self._share_server)
+            stop_share(self._share_server)
             self._share_server = None
         super().closeEvent(event)
