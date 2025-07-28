@@ -43,6 +43,7 @@
 - Alle Daten bleiben lokal; keine Cloudspeicherung
 - API-Schluessel werden in einer Datei gesichert und niemals in den Code eingebettet
 - Passwoerter werden beim Speichern gehasht
+- Passwort-Hashing erfolgt mit `bcrypt`; alte SHA256-Hashes werden beim Login automatisch migriert
 - Plugin-System ermoeglicht Erweiterungen (z.B. neue Agenten oder Funktionen)
 - TTS-Ausgabe fuer Rueckmeldungen der Queen
 - Beispiel-Plugin aktiviert Darkmode in der GUI
@@ -50,6 +51,7 @@
 - `build.py` baut Windows- und Linux-Installer via PyInstaller
 - `lan_share.py` ermoeglicht Projekt-Sharing ueber einen lokalen HTTP-Server
 - Adminpanel und Settings-Fenster sind in der GUI integriert
+- Nur Admins koennen Projekte loeschen und die Einstellungen oeffnen
 
 ## Erweiterte Live-Steuerung
 - KI-Laeufe lassen sich im Dashboard pausieren und fortsetzen.
