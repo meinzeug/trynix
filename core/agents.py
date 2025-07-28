@@ -5,6 +5,7 @@ from db import (
     update_task_status,
     add_code_file,
     add_message,
+    set_project_roadmap,
 )
 from services.openrouter import send_prompt
 import subprocess
@@ -13,6 +14,7 @@ from pathlib import Path
 
 from speech import speak
 from core.config import CONFIG
+from .roadmap import save_roadmap
 from typing import Dict, Type
 
 
@@ -25,17 +27,29 @@ class BaseAgent:
 class Queen(BaseAgent):
     """Simple project planning agent."""
 
-    def plan_project(self, project_id: int, idea: str) -> None:
+    def plan_project(self, project_id: int, idea: str, workspace: Path) -> None:
         response = send_prompt(
             f"Create a numbered task list for the following project idea:\n{idea}\nReturn one task per line."
         )
         add_message(self.conn, project_id, self.name, response)
         if CONFIG.tts_enabled:
             speak(response)
+        tasks = []
         for line in response.splitlines():
             line = line.strip()
             if line:
                 create_task(self.conn, project_id, "hive", line)
+                tasks.append({"title": line, "status": "open"})
+
+        roadmap = {
+            "concept": idea,
+            "milestones": [
+                {"title": "Initial", "status": "open", "tasks": tasks}
+            ],
+        }
+        path = workspace / "roadmap.json"
+        save_roadmap(roadmap, path)
+        set_project_roadmap(self.conn, project_id, str(path))
 
 
 class HiveWorker(BaseAgent):
