@@ -51,4 +51,4 @@ Deine Aufgabe ist es jetzt, mit der **technischen Umsetzung der geplanten Funkti
 
 ---
 
-[Codex aktiviert – fahre fort mit Milestone 9 (Verbesserter Code-Viewer)]
+[Codex aktiviert – fahre fort mit Milestone 10 (Automatische Queen-TTS)]
