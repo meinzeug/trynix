@@ -11,3 +11,6 @@
 - Claude-Flow-Integration erweitert: AIController startet nach der Codegenerierung einen Hive-Mind-Lauf und schreibt die Ausgabe ins Nachrichtenlog.
 
 - Automatisches Update-Skript fuer Milestones erstellt und ausgefuehrt.
+- TestWorker implementiert: Fuehrt Syntaxchecks nach jeder Codegenerierung aus
+  und schreibt das Ergebnis ins Chatlog. Milestone 4 "Test-Tasks" damit
+  abgeschlossen.

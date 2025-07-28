@@ -14,7 +14,7 @@ DONE_PREFIXES = {
     "Queen-Agent und Hive Worker": True,
     "Task-Verwaltung": True,
     "Worker generieren Code-Files": True,
-    "Test-Tasks": False,
+    "Test-Tasks": True,
     "Chat-/Log-Ansicht": True,
     "STT-Modul": True,
     "Mikrofon-Button": True,

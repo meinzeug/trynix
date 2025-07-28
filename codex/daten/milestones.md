@@ -19,7 +19,7 @@
 
 ## Milestone 4: Code-Generation & Testing
 - [x] Worker generieren Code-Files und speichern sie in `code_files`
-- [ ] Test-Tasks anstoßen und Ergebnisse darstellen
+- [x] Test-Tasks anstoßen und Ergebnisse darstellen
 - [x] Chat-/Log-Ansicht mit allen Nachrichten (Tabelle `messages`)
 
 ## Milestone 5: Sprachsteuerung & erweiterte GUI

@@ -7,6 +7,9 @@ from db import (
     add_message,
 )
 from services.openrouter import send_prompt
+import subprocess
+import tempfile
+from pathlib import Path
 
 
 class BaseAgent:
@@ -32,9 +35,43 @@ class Queen(BaseAgent):
 class HiveWorker(BaseAgent):
     """Basic code generation worker."""
 
-    def execute_task(self, task_id: int, project_id: int, description: str) -> None:
+    def execute_task(self, task_id: int, project_id: int, description: str) -> str:
+        """Generate code for a task and return the code."""
         code = send_prompt(description)
         add_message(self.conn, project_id, self.name, code)
         file_path = f"task_{task_id}.py"
         add_code_file(self.conn, project_id, file_path, code)
         update_task_status(self.conn, task_id, "done")
+        return code
+
+
+class TestWorker(BaseAgent):
+    """Run simple syntax checks on generated code."""
+
+    def run_tests(self, project_id: int, task_id: int, code: str) -> str:
+        """Compile generated code to check for syntax errors."""
+        tmp = tempfile.NamedTemporaryFile("w", suffix=".py", delete=False)
+        try:
+            tmp.write(code)
+            tmp.close()
+            result = subprocess.run(
+                ["python", "-m", "py_compile", tmp.name],
+                capture_output=True,
+                text=True,
+            )
+            if result.returncode == 0:
+                status = "passed"
+                msg = "Syntax OK"
+            else:
+                status = "failed"
+                msg = result.stderr.strip()
+        finally:
+            Path(tmp.name).unlink(missing_ok=True)
+
+        add_message(
+            self.conn,
+            project_id,
+            self.name,
+            f"Test result for task {task_id}: {status}\n{msg}",
+        )
+        return status
