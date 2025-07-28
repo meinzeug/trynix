@@ -138,6 +138,7 @@ Die Datenbank wird bei Erststart automatisch erzeugt.
 - **Mikrofonbutton für Spracheingabe**
 - **API-Key Einstellungen in der GUI**
 - **Adminpanel zur Benutzerverwaltung**
+- **Projektlöschung und Einstellungen nur für Admins**
 
 ---
 
