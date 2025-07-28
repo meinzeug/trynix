@@ -29,6 +29,9 @@ Die Software führt ein ganzes KI-Entwicklungsteam – eine Projektleiterin-KI (
 - 🧠 **Eigene KI-Agenten & Tools**
   Die App bietet eine grafische Oberfläche zum Erstellen neuer Agenten und deren Werkzeuge.
   Diese Agenten können spezialisierte Aufgaben übernehmen und nahtlos mit der Queen zusammenarbeiten.
+- 🧠 **Zentrale Kontext-Engine**
+  Die App speichert fortlaufend den Zustand aller Agenten, Aufgaben und Dialoge in einer zentralen Kontextstruktur.
+  Damit ist jederzeit nachvollziehbar, wer woran arbeitet, was als Nächstes kommt – und welche Informationen übergeben wurden.
 - **Plattformübergreifend**: Läuft auf Windows & Linux als PySide6 Desktop-App.
 
 ---

@@ -1,1 +1,1 @@
-Beginne mit der Umsetzung der neuen Agenten- und Tool-Engine ab dem nächsten Lauf.
+Starte im nächsten Lauf mit der Implementierung der zentralen Kontext-Engine gemäß Milestone 20.

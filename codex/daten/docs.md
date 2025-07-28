@@ -86,3 +86,14 @@ Neue Agenten werden als Python-Klassen definiert, die `BaseAgent` erweitern. Ein
 
 Tools sind ebenfalls per YAML konfigurierbar. Jede Definition enthält `name`, `description`, `command` und optionale Eingabeparameter. Die Agentenkonfiguration legt fest, welche Tools ein Agent verwenden darf. Beim Laden registriert das Plugin die Tools und ordnet sie den Agenten zu.
 
+
+## Zentrale Kontext-Engine
+Die Anwendung verwaltet alle relevanten Zustände in einer globalen Kontextstruktur (`context_state.json`). Diese besteht aus:
+
+- `history` – vollständige Gesprächsverläufe
+- `agents` – aktueller Status der einzelnen Agenten
+- `task_flow` – sämtliche Routinen mit Bearbeitungsstatus
+- `handoffs` – protokollierte Übergaben inkl. Kontext
+- `user_actions` – manuelle Eingriffe und Entscheidungen des Nutzers
+
+Die Struktur wird bei jedem Ereignis automatisch fortgeschrieben und lässt sich über eine API lesen oder aktualisieren. Optional können die Daten zusätzlich in der Datenbank gesichert werden.
