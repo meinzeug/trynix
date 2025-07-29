@@ -58,3 +58,4 @@
   Zustände in `context_state.json`, kann optional in der DB gesichert werden
   und ist über ein eigenes GUI-Fenster einsehbar.
 - 2025-07-28: Milestone 18 Funktionalität überprüft, alle Tests laufen.
+- 2025-07-29: Milestone 18 erneut überprüft, alle Tests erfolgreich.
