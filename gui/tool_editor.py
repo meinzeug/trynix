@@ -3,6 +3,7 @@ from __future__ import annotations
 from PySide6 import QtWidgets
 
 from core.tool_store import add_tool
+from core.tools import register_tool
 
 
 class ToolEditorDialog(QtWidgets.QDialog):
@@ -38,6 +39,7 @@ class ToolEditorDialog(QtWidgets.QDialog):
         }
         try:
             add_tool(tool)
+            register_tool(name, tool)
         except ValueError as exc:
             QtWidgets.QMessageBox.warning(self, "Tool", str(exc))
             return
