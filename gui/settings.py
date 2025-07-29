@@ -16,12 +16,21 @@ class SettingsWindow(QtWidgets.QDialog):
             self.key_edit.setText(load_api_key())
         except Exception:
             pass
+        self.github_user_edit = QtWidgets.QLineEdit()
+        if CONFIG.github_user:
+            self.github_user_edit.setText(CONFIG.github_user)
+        self.github_token_edit = QtWidgets.QLineEdit()
+        self.github_token_edit.setEchoMode(QtWidgets.QLineEdit.Password)
+        if CONFIG.github_token:
+            self.github_token_edit.setText(CONFIG.github_token)
         self.tts_check = QtWidgets.QCheckBox("Enable Queen TTS")
         self.tts_check.setChecked(CONFIG.tts_enabled)
         save_btn = QtWidgets.QPushButton("Save")
 
         layout = QtWidgets.QFormLayout(self)
         layout.addRow("OpenRouter API Key", self.key_edit)
+        layout.addRow("GitHub Username", self.github_user_edit)
+        layout.addRow("GitHub Token", self.github_token_edit)
         layout.addRow(self.tts_check)
         layout.addWidget(save_btn)
 
@@ -29,6 +38,8 @@ class SettingsWindow(QtWidgets.QDialog):
 
     def save(self) -> None:
         save_api_key(self.key_edit.text())
+        CONFIG.github_user = self.github_user_edit.text().strip() or None
+        CONFIG.github_token = self.github_token_edit.text().strip() or None
         CONFIG.tts_enabled = self.tts_check.isChecked()
         CONFIG.save(CONFIG_PATH)
         QtWidgets.QMessageBox.information(self, "Settings", "Saved")

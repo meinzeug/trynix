@@ -77,7 +77,7 @@ def test_dashboard_permissions(monkeypatch, tmp_path):
     assert row is not None
 
 
-def test_settings_permission(monkeypatch, tmp_path):
+def test_settings_access(monkeypatch, tmp_path):
     import pytest
     try:
         from PySide6 import QtWidgets
@@ -92,8 +92,15 @@ def test_settings_permission(monkeypatch, tmp_path):
 
     dash = Dashboard(conn, user_id=1, username="user", role="user")
 
-    warnings = []
-    monkeypatch.setattr(QtWidgets.QMessageBox, "warning", lambda *a, **k: warnings.append(True))
+    flags = []
+    monkeypatch.setattr(QtWidgets.QMessageBox, "warning", lambda *a, **k: flags.append("warn"))
+
+    class Dummy:
+        def exec(self):
+            flags.append("exec")
+
+    monkeypatch.setattr("gui.dashboard.SettingsWindow", Dummy)
 
     dash.open_settings()
-    assert warnings
+    assert "warn" not in flags
+    assert "exec" in flags

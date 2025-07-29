@@ -138,9 +138,9 @@ Die Datenbank wird bei Erststart automatisch erzeugt.
 - **Task-Panel mit Agentenzuordnung**
 - **Code-Viewer mit Syntaxhighlighting**
 - **Mikrofonbutton für Spracheingabe**
-- **API-Key Einstellungen in der GUI**
+- **Einstellungsdialog f\u00fcr OpenRouter und GitHub Tokens**
 - **Adminpanel zur Benutzerverwaltung**
-- **Projektlöschung und Einstellungen nur für Admins**
+- **Projektlöschung nur für Admins**
 
 ---
 
@@ -149,7 +149,7 @@ Die Datenbank wird bei Erststart automatisch erzeugt.
 - Lokale Speicherung (keine Cloud)
  - Passwort-Hashing mit `bcrypt`
 - API-Key-Handling sicher in Datei
-- Nur Admin darf Projekte löschen, Konfiguration ändern
+- Nur Admin darf Projekte löschen
 
 ---
 
@@ -161,6 +161,7 @@ Die Datenbank wird bei Erststart automatisch erzeugt.
 - Node.js ≥ 18
 - Claude-Flow CLI installiert
 - OpenRouter API-Key
+- GitHub PAT (optional)
 
 ### Build mit PyInstaller
 
