@@ -53,3 +53,4 @@
 - 2025-08-29: Werkzeugverwaltung ergänzt um `remove_tool`; Dokumentation aktualisiert.
 - 2025-09-05: Prompt erneut ausgefuehrt, Milestone 18 bestaetigt.
 - 2025-09-07: Prompt erneut ausgefuehrt, Milestone 18 bestaetigt.
+- 2025-09-08: Prompt erneut ausgefuehrt, Milestone 18 bestaetigt.
