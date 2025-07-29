@@ -8,6 +8,8 @@ class Config:
     log_dir: Path = Path('.trynix/logs')
     workspace_dir: Path = Path('workspace')
     tts_enabled: bool = True
+    github_user: str | None = None
+    github_token: str | None = None
 
     @classmethod
     def load(cls, path: Path | str) -> 'Config':
@@ -19,6 +21,8 @@ class Config:
                 log_dir=Path(data.get('log_dir', cls.log_dir)),
                 workspace_dir=Path(data.get('workspace_dir', cls.workspace_dir)),
                 tts_enabled=data.get('tts_enabled', cls.tts_enabled),
+                github_user=data.get('github_user'),
+                github_token=data.get('github_token'),
             )
         return cls()
 
@@ -31,6 +35,8 @@ class Config:
                     'log_dir': str(self.log_dir),
                     'workspace_dir': str(self.workspace_dir),
                     'tts_enabled': self.tts_enabled,
+                    'github_user': self.github_user,
+                    'github_token': self.github_token,
                 },
                 indent=2,
             )

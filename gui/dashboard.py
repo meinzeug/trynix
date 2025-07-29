@@ -75,8 +75,8 @@ class Dashboard(QtWidgets.QMainWindow):
         layout.addWidget(self.agents_btn)
         layout.addWidget(self.status_btn)
         layout.addWidget(self.status_label)
+        layout.addWidget(self.settings_btn)
         if role == "admin":
-            layout.addWidget(self.settings_btn)
             layout.addWidget(self.delete_btn)
             layout.addWidget(self.admin_btn)
         self.setCentralWidget(central)
@@ -215,9 +215,6 @@ class Dashboard(QtWidgets.QMainWindow):
         )
 
     def open_settings(self) -> None:
-        if self.role != "admin":
-            QtWidgets.QMessageBox.warning(self, "Access", "Admins only")
-            return
         win = SettingsWindow()
         win.exec()
 
